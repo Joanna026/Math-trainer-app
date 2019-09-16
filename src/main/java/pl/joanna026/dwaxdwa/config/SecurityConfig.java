@@ -24,9 +24,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return  PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+    
+    
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("admin").password("pass").roles("ADMIN");
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
@@ -41,10 +46,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register").anonymous()
-                .anyRequest().authenticated()
+                .antMatchers("/register", "/").anonymous()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/teacher/**").hasAnyRole("TEACHER", "ADMIN")
+                .antMatchers("/student/**").hasRole("STUDENT")
                 .and()
                 .formLogin()
+                .loginPage("/login")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
                 .and()
                 .csrf()
                 .and();
