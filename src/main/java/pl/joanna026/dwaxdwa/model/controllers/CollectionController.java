@@ -2,43 +2,41 @@ package pl.joanna026.dwaxdwa.model.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import pl.joanna026.dwaxdwa.model.entities.Exercise;
+import org.springframework.web.bind.annotation.*;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
-import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
 
+import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
-@RequestMapping("/student/collection")
+@RequestMapping("/student/collections")
 public class CollectionController {
 
-    private final UserService userService;
     private final ExerciseCollectionService exerciseCollectionService;
+    private final UserService userService;
 
-    public CollectionController(UserService userService, ExerciseCollectionService exerciseCollectionService) {
-        this.userService = userService;
+
+    public CollectionController(ExerciseCollectionService exerciseCollectionService, UserService userService) {
         this.exerciseCollectionService = exerciseCollectionService;
+        this.userService = userService;
     }
 
-    @GetMapping("/all")
-    public String prepareCollectionsByUserPage(String username, Model model) {
-        User user = userService.findByUsername(username);
-        List<ExerciseCollection> availableExerciseCollections = user.getAvailableExerciseCollection();
-        model.addAttribute("collections", availableExerciseCollections);
+    @GetMapping
+    public String prepareAllCollectionsPage(Model model) {
+        List<ExerciseCollection> exerciseCollections = exerciseCollectionService.findBy();
+        for (ExerciseCollection collection : exerciseCollections) {
+            model.addAttribute("collections", exerciseCollections);
+        }
         return "collectionList";
     }
 
-    @PostMapping("/all")
-    public String prepareSolveExercisePage(Long collectionId) {
+    @PostMapping
+    public String processAllCollectionsPage(Principal principal, @RequestParam Long collectionId) {
 
-       return "redirect:/exercise?collectionId="+collectionId;
+        userService.addToAvailableCollections(principal,collectionId);
+       return "redirect:/student/home";
     }
 
 

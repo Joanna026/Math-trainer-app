@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Embeddable
 @Entity
+@Table(name = "roles")
 public class Role {
 
     @Id
