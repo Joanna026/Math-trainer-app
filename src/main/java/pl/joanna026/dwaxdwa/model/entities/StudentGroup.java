@@ -15,7 +15,7 @@ public class StudentGroup {
     @NotEmpty
     private String name;
     @OneToMany (mappedBy = "group")
-    private List<Student> studentList = new ArrayList<>();
+    private List<User> studentList = new ArrayList<>();
 
     public StudentGroup() {
     }
@@ -36,11 +36,11 @@ public class StudentGroup {
         this.name = name;
     }
 
-    public List<Student> getStudentList() {
+    public List<User> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
+    public void setStudentList(List<User> studentList) {
         this.studentList = studentList;
     }
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.validation.constraints.NotNull;
 
-public class TeacherCreateDTO {
+public class UserCreateDTO {
 
     @NotNull
     private String username;

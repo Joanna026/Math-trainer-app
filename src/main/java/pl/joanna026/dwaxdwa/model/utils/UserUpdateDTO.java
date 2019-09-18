@@ -3,7 +3,7 @@ package pl.joanna026.dwaxdwa.model.utils;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-public class TeacherUpdateDTO {
+public class UserUpdateDTO {
 
     @Id
     @NotNull
@@ -12,6 +12,7 @@ public class TeacherUpdateDTO {
     private String username;
     @NotNull
     private String password;
+
 
     public Long getId() {
         return id;

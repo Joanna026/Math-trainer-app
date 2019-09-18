@@ -25,9 +25,13 @@ public class Exercise {
     private List<ExerciseCollection> collectionList = new ArrayList<>();
     @NotEmpty
     private String correctAnswer;
-//    private Set<String> wrongAnswers = new HashSet<>();
+    @Column
+    @ElementCollection(targetClass = String.class)
+    private List<String> wrongAnswers = new ArrayList<>();
     private Integer timeSec;
     private Integer repetitionNumber;
+    @Transient
+    private Integer repetitionNumberForStudent;
 
     public Exercise() {
     }
@@ -64,6 +68,14 @@ public class Exercise {
         this.type = type;
     }
 
+    public List<ExerciseCollection> getCollectionList() {
+        return collectionList;
+    }
+
+    public void setCollectionList(List<ExerciseCollection> collectionList) {
+        this.collectionList = collectionList;
+    }
+
     public String getCorrectAnswer() {
         return correctAnswer;
     }
@@ -72,11 +84,13 @@ public class Exercise {
         this.correctAnswer = correctAnswer;
     }
 
+    public List<String> getWrongAnswers() {
+        return wrongAnswers;
+    }
 
-
-//    public void setWrongAnswers(Set<String> wrongAnswers) {
-//        this.wrongAnswers = wrongAnswers;
-//    }
+    public void setWrongAnswers(List<String> wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
+    }
 
     public Integer getTimeSec() {
         return timeSec;
@@ -92,6 +106,14 @@ public class Exercise {
 
     public void setRepetitionNumber(Integer repetitionNumber) {
         this.repetitionNumber = repetitionNumber;
+    }
+
+    public Integer getRepetitionNumberForStudent() {
+        return repetitionNumberForStudent;
+    }
+
+    public void setRepetitionNumberForStudent(Integer repetitionNumberForStudent) {
+        this.repetitionNumberForStudent = repetitionNumberForStudent;
     }
 
     @Override

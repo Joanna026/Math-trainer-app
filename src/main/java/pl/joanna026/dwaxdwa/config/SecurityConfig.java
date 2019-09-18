@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import pl.joanna026.dwaxdwa.model.services.SpringDataUserDetailsService;
 
 import javax.sql.DataSource;
 
@@ -19,25 +19,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return  PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//    }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return  PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
-    
-    
+
+    @Bean
+    public SpringDataUserDetailsService customUserDetailsService() {
+        return new SpringDataUserDetailsService();
+    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("admin").password("pass").roles("ADMIN");
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?") ///jak nie ma kolumny enable , to 'true' w tym miejscu
-                .authoritiesByUsernameQuery("SELECT username, authority FROM users WHERE username = ?");  ///zestaw kolumn nazwa, uprawnienia
+                .authoritiesByUsernameQuery("SELECT username, authority_id FROM users WHERE username = ?");  ///zestaw kolumn nazwa, uprawnienia
     }
 
 
@@ -49,15 +55,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register", "/").anonymous()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/teacher/**").hasAnyRole("TEACHER", "ADMIN")
-                .antMatchers("/student/**").hasRole("STUDENT")
+//                .antMatchers("/student/**").hasRole("STUDENT")
+                .anyRequest().anonymous()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+//                .loginPage("/login")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
                 .and()
-                .csrf()
-                .and();
+                .csrf().disable()
+                ;
     }
 }

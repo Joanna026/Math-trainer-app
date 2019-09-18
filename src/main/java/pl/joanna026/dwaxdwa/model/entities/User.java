@@ -1,12 +1,12 @@
 package pl.joanna026.dwaxdwa.model.entities;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "students")
-public class Student{
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,23 +16,21 @@ public class Student{
     @Column(nullable = false)
     private String password;
     @Column
-    private Boolean logEnable;
+    private Boolean enabled;
     @ManyToOne
-    private Role role;
-
-    @Column(nullable = false)
+    private Role authority;
     private String name;
-    @Column (nullable = false, unique = true)
+    @Column (unique = true)
     private String email;
     @ManyToOne
     private StudentGroup group;
     @ManyToMany
     private List<ExerciseCollection> availableExerciseCollection = new ArrayList<>();
-//    private Map<ExerciseCollection, Timestamp> learntExerciseCollectionsWithFinishTime = new HashMap<>();
-//    private Map<Exercise, Boolean> exerciseCollectionInUse = new HashMap<>();
+    @ElementCollection(targetClass = LearntCollectionsWithUsers.class)
+    private List<LearntCollectionsWithUsers> learntCollections = new ArrayList<>();
 
-    public Student() {
-        setLogEnable(false);
+
+    public User() {
     }
 
     public Long getId() {
@@ -59,20 +57,20 @@ public class Student{
         this.password = password;
     }
 
-    public Boolean getLogEnable() {
-        return logEnable;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setLogEnable(Boolean logEnable) {
-        this.logEnable = logEnable;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public Role getRole() {
-        return role;
+    public Role getAuthority() {
+        return authority;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setAuthority(Role authority) {
+        this.authority = authority;
     }
 
     public String getName() {
@@ -107,28 +105,11 @@ public class Student{
         this.availableExerciseCollection = availableExerciseCollection;
     }
 
-//    public Map<ExerciseCollection, Timestamp> getLearntExerciseCollectionsWithFinishTime() {
-//        return learntExerciseCollectionsWithFinishTime;
-//    }
-//
-//    public void setLearntExerciseCollectionsWithFinishTime(Map<ExerciseCollection, Timestamp> learntExerciseCollectionsWithFinishTime) {
-//        this.learntExerciseCollectionsWithFinishTime = learntExerciseCollectionsWithFinishTime;
-//    }
+    public List<LearntCollectionsWithUsers> getLearntCollections() {
+        return learntCollections;
+    }
 
-//    public Map<Exercise, Boolean> getExerciseCollectionInUse() {
-//        return exerciseCollectionInUse;
-//    }
-
-//    public void setExerciseCollectionInUse(Map<Exercise, Boolean> exerciseCollectionInUse) {
-//        this.exerciseCollectionInUse = exerciseCollectionInUse;
-//    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", group=" + group +
-                ", availableExerciseCollection=" + availableExerciseCollection +
-                '}';
+    public void setLearntCollections(List<LearntCollectionsWithUsers> learntCollections) {
+        this.learntCollections = learntCollections;
     }
 }
