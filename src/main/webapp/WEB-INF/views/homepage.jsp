@@ -33,6 +33,9 @@
             <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
                 Nauczone
             </a>
+            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
+                Dodaj zadanie
+            </a>
         </div>
     </div>
 
@@ -95,12 +98,6 @@
 
 <%------FOOTER------%>
 
-<section class="has-background-warning" style="height: 30px">
-    <div class="columns is-mobile is-centered has-background-warning">
-        <a href="https://bulma.io" style="margin: 15px">
-            <img src="/made-with-bulma.png" alt="Made with Bulma" width="194" height="36">
-        </a>
-    </div>
-</section>
+<%@include file="footer.jsp"%>
 </body>
 </html>

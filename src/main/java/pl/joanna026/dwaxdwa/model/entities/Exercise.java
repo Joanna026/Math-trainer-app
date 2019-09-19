@@ -19,7 +19,6 @@ public class Exercise {
     private String title;
     @NotEmpty
     private String content;
-    @NotNull
     private Boolean type;
     @ManyToMany (mappedBy = "exercises")
     private List<ExerciseCollection> collectionList = new ArrayList<>();

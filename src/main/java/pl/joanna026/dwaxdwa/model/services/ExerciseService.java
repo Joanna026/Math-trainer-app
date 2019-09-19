@@ -5,4 +5,6 @@ import pl.joanna026.dwaxdwa.model.entities.Exercise;
 public interface ExerciseService  {
 
     Exercise findById(Long id);
+
+    void save(Exercise exercise);
 }
