@@ -23,4 +23,8 @@ public class ExerciseServiceImpl implements ExerciseService{
         exercise.setId(null);
         exerciseRepository.save(exercise);
     }
+
+
+
+
 }

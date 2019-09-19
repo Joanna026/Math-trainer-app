@@ -36,19 +36,22 @@ public class LearntCollectionsController {
     public String moveCollectionToLearnt(Principal principal, @PathVariable Long collectionId) {
 
         User user  = userService.findByUsername(principal.getName());
-        List<LearntCollectionsWithUsers> learntExerciseCollections = user.getLearntCollections();
+        List<LearntCollectionsWithUsers> learntExerciseCollectionsList = user.getLearntCollections();
         Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);
         optionalCollection.ifPresent(collection-> {
             LearntCollectionsWithUsers learntCollection = new LearntCollectionsWithUsers();
             learntCollection.setStudentId(user.getId());
             learntCollection.setCollectionId(collectionId);
             learntCollection.setCollectionName(collection.getName());
-            learntCollectionsWithUsersService.save(learntCollection);
 
             LearntCollectionsWithUsers userLearntCollection = learntCollectionsWithUsersService.findByUserAndCollection(user.getId(), collectionId);
-            learntExerciseCollections.add(userLearntCollection);
-            user.setLearntCollections(learntExerciseCollections);
-            userService.save(user);
+            if(!learntExerciseCollectionsList.contains(userLearntCollection)) {
+                learntCollectionsWithUsersService.save(learntCollection);
+                learntExerciseCollectionsList.add(userLearntCollection);
+                user.setLearntCollections(learntExerciseCollectionsList);
+                userService.save(user);
+            }
+
         });
 
 

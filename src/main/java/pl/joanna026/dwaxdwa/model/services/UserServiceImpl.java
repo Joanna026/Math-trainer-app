@@ -3,6 +3,7 @@ package pl.joanna026.dwaxdwa.model.services;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
+import pl.joanna026.dwaxdwa.model.entities.LearntCollectionsWithUsers;
 import pl.joanna026.dwaxdwa.model.entities.Role;
 import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.repositories.ExerciseCollectionRepository;
@@ -51,11 +52,15 @@ public class UserServiceImpl implements UserService {
     public void addToAvailableCollections(Principal principal, Long collectionId) {
         User user = userRepository.findByUsername(principal.getName());
         List<ExerciseCollection> availableExerciseCollection = user.getAvailableExerciseCollection();
+        List<LearntCollectionsWithUsers> learntCollections = user.getLearntCollections();
         Optional<ExerciseCollection> collectionToAdd = exerciseCollectionRepository.findById(collectionId);
         collectionToAdd.ifPresent(collection -> {
-            availableExerciseCollection.add(collection);
-            user.setAvailableExerciseCollection(availableExerciseCollection);
-            userRepository.save(user);
+
+            if(!availableExerciseCollection.contains(collection) && !learntCollections.contains(collection)) {
+                availableExerciseCollection.add(collection);
+                user.setAvailableExerciseCollection(availableExerciseCollection);
+                userRepository.save(user);
+            }
         });
     }
 
