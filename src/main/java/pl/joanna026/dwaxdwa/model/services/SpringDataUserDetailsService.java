@@ -20,16 +20,13 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     public SpringDataUserDetailsService() {
     }
 
-    public SpringDataUserDetailsService(UserService userService
-
-    ) {
+    public SpringDataUserDetailsService(UserService userService) {
         this.userService = userService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUsername(username);
-        System.out.println("user"+user);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

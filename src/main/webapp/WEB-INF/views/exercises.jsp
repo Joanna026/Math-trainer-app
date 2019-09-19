@@ -37,7 +37,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a class="button is-danger is-medium" id="log-out">Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-medium">Wyloguj się</a>
                 </p>
             </div>
         </div>

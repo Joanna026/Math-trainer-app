@@ -17,7 +17,7 @@ public class User {
     private String password;
     @Column
     private Boolean enabled;
-    @ManyToOne
+    @OneToOne
     private Role authority;
     private String name;
     @Column (unique = true)
@@ -96,6 +96,7 @@ public class User {
     public void setGroup(StudentGroup group) {
         this.group = group;
     }
+
 
     public List<ExerciseCollection> getAvailableExerciseCollection() {
         return availableExerciseCollection;

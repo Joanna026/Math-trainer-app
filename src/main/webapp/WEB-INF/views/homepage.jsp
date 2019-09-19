@@ -27,17 +27,21 @@
     </div>
     <div class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item has-text-danger" href="/student/collections">
+            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%" href="/student/collections">
                 Zbiory zadań
+            </a>
+            <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+                Nauczone
             </a>
         </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
+
+    <div  class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a class="button is-danger is-size-4 is-medium" id="log-out">Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
                 </p>
             </div>
         </div>
@@ -47,14 +51,14 @@
 
 <%------BODY------%>
 
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <p style="font-size: 70px" class="has-text-info">Moje zbiory zadań</p>
+    </div>
+</nav>
+
 <section class="hero is-fullheight has-background-warning">
     <div class="hero-body">
-            <nav class="navbar has-background-yellow" role="navigation" aria-label="main navigation"
-                 style="height: 120px">
-                <div class="navbar-brand has-text-centered has-text-primary is-size-3" style="font-weight: bold; margin-right: 20%">
-                    Moje zbiory zadań
-                </div>
-            </nav>
 
 
         <div class="columns is-one-quarter is-multiline is-mobile">

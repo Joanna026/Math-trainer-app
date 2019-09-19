@@ -47,7 +47,7 @@
                 </p>
             </div>
             <div>
-                <a href='/student/home' class="button is-info is-large" style="margin-top: 100px; margin-left: 75%">
+                <a href='/student/home' class="button is-info is-large">
                             <span class="icon is-medium">
                                 <i class="fas fa-home"></i>
                             <span>Strona główna</span>

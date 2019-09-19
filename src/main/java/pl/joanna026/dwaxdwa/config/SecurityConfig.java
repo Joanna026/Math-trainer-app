@@ -6,14 +6,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import pl.joanna026.dwaxdwa.model.services.SpringDataUserDetailsService;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/js/**",
             "/images/**",
             "/static/**",
+            "/resources/**",
             "/"
     };
 
@@ -65,31 +61,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//
-//        List<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
-//        if (activeProfiles.contains("dev")) {
-//            http.csrf().disable();
-//            http.headers().frameOptions().disable();
-//        }
 
         http
                 .authorizeRequests()
-                .antMatchers(PUBLIC_MATCHERS).permitAll()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers("/register", "/").anonymous()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/teacher/**").hasAnyRole("TEACHER", "ADMIN")
                 .antMatchers("/student/**").hasRole("STUDENT")
-                .anyRequest().anonymous()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/student/home")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/login")
                 .and()
                 .csrf().disable()
-                ;
+        ;
     }
 
 }

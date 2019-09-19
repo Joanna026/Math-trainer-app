@@ -21,7 +21,15 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
-
+    </div>
+    <div  class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <p class="control">
+                    <a href="/user/add" class="button is-danger is-size-4 is-medium">Załóż konto</a>
+                </p>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -74,14 +82,7 @@
 </section>
 
 <%------FOOTER------%>
-
-<section class="has-background-warning" style="height: 30px">
-    <div class="columns is-mobile is-centered has-background-warning">
-        <a href="https://bulma.io" style="margin: 15px">
-            <img src="/made-with-bulma.png" alt="Made with Bulma" width="194" height="36">
-        </a>
-    </div>
-</section>
+<%@include file="footer.jsp"%>
 
 </body>
 </html>

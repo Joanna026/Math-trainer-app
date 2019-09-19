@@ -56,7 +56,6 @@ public class ExerciseController {
         } else {
             exerciseResults.set(index, exerciseResults.get(index)+1);
         }
-        System.out.println(exerciseResults);
         session.setAttribute("results", exerciseResults);
         int newIndex = 0;
         if (index < size-1) {
@@ -66,7 +65,7 @@ public class ExerciseController {
             if (!(exerciseResults.stream().allMatch(rep -> rep == 0))) {
                 newIndex++;
             } else {
-                return "congrats";
+                return "redirect:/student/learnt/"+collectionId;
             }
         }
         return "redirect:/student/exercise?index="+newIndex+"&collectionId="+collectionId;

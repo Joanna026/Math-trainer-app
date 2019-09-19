@@ -1,5 +1,7 @@
 package pl.joanna026.dwaxdwa.model.utils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -10,7 +12,7 @@ public class UserUpdateDTO {
     private Long id;
     @NotNull
     private String username;
-    @NotNull
+    @JsonIgnore
     private String password;
 
 
@@ -32,9 +34,5 @@ public class UserUpdateDTO {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
