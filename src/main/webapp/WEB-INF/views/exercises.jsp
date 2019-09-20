@@ -32,12 +32,26 @@
     <div class="navbar-brand">
         <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
     </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%" href="/student/collections">
+                Zbiory zadań
+            </a>
+            <a class="navbar-item has-text-info" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+                Zaliczone testy
+            </a>
+            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
+                Dodaj zadanie
+            </a>
+        </div>
+    </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
+
+    <div  class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/logout" class="button is-danger is-medium">Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
                 </p>
             </div>
         </div>
@@ -45,12 +59,13 @@
 </nav>
 
 
+
 <%------BODY------%>
 
 <section class="hero is-fullheight has-background-warning">
     <div class="hero-body">
         <div class="container is-centered">
-            <div class="columns is-centered has-text-primary has-text-weight-semibold">
+            <div class="columns is-centered has-text-info has-text-weight-semibold">
                 <p style="font-size: 150px">
                     ${exercise.content}
                 </p>
@@ -60,7 +75,7 @@
                     <div class="control has-icons-right" style="display: inline-block">
                         <form action="${pageContext.request.contextPath}/student/exercise?index=${index}&collectionId=${collectionId}"
                               method="post">
-                            <input class="input is-primary is-large has-text-centered"
+                            <input class="input is-info is-large has-text-centered"
                                    style="font-size: 120px; width: 60%; height: 70%; margin-top: 6%; margin-left: 20%; text-align: center"
                                    type="text" name="answer" placeholder="wynik" autofocus="autofocus"/>
                             <input type="hidden" name="correctAnswer" value="${exercise.correctAnswer}"/>
@@ -68,20 +83,14 @@
                     </div>
                 </div>
             </div>
+<%--            <div class="column is-mobile">--%>
+<%--               <p>Pozostało powtórzeń:</p>--%>
+<%--                <p class="has-text-weight-bold is-size-2 has-text-danger">${results[index]}</p>--%>
+<%--            </div>--%>
         </div>
     </div>
 </section>
 
-
-<%--<div>--%>
-<%--    <form action="${pageContext.request.contextPath}/student/exercise?index=${index}&collectionId=${collectionId}"  method="post">--%>
-<%--        <input name ="answer" type="text"/><br/>--%>
-<%--&lt;%&ndash;        <input type="hidden" name="collectionId" value="${collectionId}"/>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        <input type="hidden" name="index" value="${index}"/>&ndash;%&gt;--%>
-<%--        <input type="hidden" name="correctAnswer" value="${exercise.correctAnswer}"/>--%>
-<%--        <input type="submit" value="ok"/>--%>
-<%--    </form>--%>
-<%--</div>--%>
 
 <%------FOOTER------%>
 

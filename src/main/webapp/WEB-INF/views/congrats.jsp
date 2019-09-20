@@ -23,12 +23,26 @@
     <div class="navbar-brand">
         <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
     </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%" href="/student/collections">
+                Zbiory zadań
+            </a>
+            <a class="navbar-item has-text-info" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+                Zaliczone testy
+            </a>
+            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
+                Dodaj zadanie
+            </a>
+        </div>
+    </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
+
+    <div  class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a class="button is-danger is-medium" id="log-out">Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
                 </p>
             </div>
         </div>
@@ -46,26 +60,12 @@
                     Brawo!!!
                 </p>
             </div>
-            <div>
-                <a href='/student/home' class="button is-info is-large">
-                            <span class="icon is-medium">
-                                <i class="fas fa-home"></i>
-                            <span>Strona główna</span>
-                                </span>
-                </a>
-            </div>
         </div>
     </div>
 </section>
 
 <%------FOOTER------%>
 
-<section class="has-background-warning" style="height: 30px">
-    <div class="columns is-mobile is-centered has-background-warning">
-        <a href="https://bulma.io" style="margin: 15px">
-            <img src="/made-with-bulma.png" alt="Made with Bulma" width="194" height="36">
-        </a>
-    </div>
-</section>
+<%@include file="footer.jsp"%>
 </body>
 </html>

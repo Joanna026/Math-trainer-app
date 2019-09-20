@@ -31,7 +31,7 @@
                 Zbiory zadań
             </a>
             <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
-                Nauczone
+                Zaliczone testy
             </a>
             <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
                 Dodaj zadanie
@@ -54,34 +54,33 @@
 
 <%------BODY------%>
 
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <p style="font-size: 70px" class="has-text-info">Moje zbiory zadań</p>
-    </div>
+<nav class="navbar has-background-warning" style="height: 200px">
+    <p class="navbar-item has-text-centered has-text-dark is-size-2" style="font-weight: bold; margin-left: 45px">
+        Moje zbiory zadań
+    </p>
 </nav>
 
-<section class="hero is-fullheight has-background-warning">
-    <div class="hero-body">
+
+        <div class="columns is-one-quarter is-multiline is-mobile has-background-warning" style="height: 1000px">
 
 
-        <div class="columns is-one-quarter is-multiline is-mobile">
             <c:forEach items="${collections}" var="collection">
 
-                <div class="box" style="height: 50%">
+                <div class="box" style="height: 200px; margin-left: 30px; margin-right: 30px; margin-top: 30px">
                     <article class="media">
                         <div class="media-content">
                             <div class="content">
-                                <p style="text-align: center">
+                                <p style="text-align: center; font-size: larger">
                                     <strong>${collection.name}</strong>
                                 </p>
                             </div>
                             <nav class="level is-mobile">
-                                <div class="level-left">
+                                <div class="level-item" style="margin-top: 60px">
                                     <form action="/student/home?collectionId=${collection.id}" method="post">
-                                        <input  type="submit" class="level-item button has-background-grey-lighter has-text-grey-darker"
+                                        <input  type="submit" class="button has-background-grey-lighter has-text-grey-darker"
                                                 value ="Usuń"/>
                                     </form>
-                                    <a class="level-item button is-info"
+                                    <a class="button is-info"
                                        href='/student/exercise?index=0&collectionId=${collection.id}'
                                        style="margin-left: 30px; margin-right: 30px">Start</a>
                                 </div>
@@ -92,8 +91,6 @@
 
             </c:forEach>
         </div>
-    </div>
-</section>
 
 
 <%------FOOTER------%>

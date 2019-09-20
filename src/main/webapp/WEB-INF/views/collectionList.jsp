@@ -22,36 +22,46 @@
 
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
+        <a href="/student/home">
+            <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item has-text-info" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+                Zaliczone testy
+            </a>
+            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
+                Dodaj zadanie
+            </a>
+        </div>
     </div>
 
-    <div class="navbar-menu">
+
+    <div  class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a class="button is-danger is-medium" >Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
                 </p>
             </div>
         </div>
     </div>
 </nav>
 
-
 <%------BODY------%>
 
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <p style="font-size: 30px" class="has-text-info">Zbiory zadań</p>
-    </div>
+<nav class="navbar has-background-warning" style="height: 200px">
+    <p class="navbar-item has-text-centered has-text-dark is-size-2" style="font-weight: bold; margin-left: 45px">
+        Moje zbiory zadań
+    </p>
 </nav>
 
-<section class="hero is-fullheight has-background-warning">
-    <div class="hero-body">
-
+<div class="columns is-one-quarter is-multiline is-mobile has-background-warning" style="height: 1000px">
 
         <c:forEach items="${collections}" var="collection">
 
-            <div class="box" style="height: 80%">
+            <div class="box" style="height: 200px; margin-left: 30px; margin-right: 30px; margin-top: 30px">
                 <article class="media">
                     <div class="media-content">
                         <div class="content">
@@ -60,7 +70,7 @@
                             </p>
                         </div>
                         <nav class="level is-mobile">
-                            <div class="level-left">
+                            <div class="level-item" style="margin-top: 60px">
                                 <form action="/student/collections" method="post">
                                     <input  type="submit" class="level-item button is-info"
                                             value ="Dodaj"/>
@@ -73,16 +83,9 @@
             </div>
         </c:forEach>
     </div>
-</section>
 
 <%------FOOTER------%>
 
-<section class="has-background-warning" style="height: 30px">
-    <div class="columns is-mobile is-centered has-background-warning">
-        <a href="https://bulma.io" style="margin: 15px">
-            <img src="/made-with-bulma.png" alt="Made with Bulma" width="194" height="36">
-        </a>
-    </div>
-</section>
+<%@include file="footer.jsp"%>
 </body>
 </html>

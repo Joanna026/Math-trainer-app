@@ -56,14 +56,17 @@ public class ExerciseController {
         } else {
             exerciseResults.set(index, exerciseResults.get(index)+1);
         }
+        System.out.println(exerciseResults);
         session.setAttribute("results", exerciseResults);
         int newIndex = 0;
         if (index < size-1) {
             newIndex = ++index;
         }
         while (exerciseResults.get(newIndex)==0) {
-            if (!(exerciseResults.stream().allMatch(rep -> rep == 0))) {
+            if (!(exerciseResults.stream().allMatch(rep -> rep == 0)) && newIndex < size-1) {
                 newIndex++;
+            }else if (newIndex == size -1) {
+                newIndex=0;
             } else {
                 return "redirect:/student/learnt/"+collectionId;
             }

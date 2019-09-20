@@ -20,14 +20,16 @@
 
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
+        <a href="/student/home">
+            <img src="/DwaxDwa-logo.png" alt="DwaxDwa" style="height: 80px">
+        </a>
     </div>
     <div class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%" href="/student/collections">
                 Zbiory zadań
             </a>
-            <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+            <a class="navbar-item has-text-info" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
                 Nauczone
             </a>
         </div>

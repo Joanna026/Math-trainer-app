@@ -22,15 +22,15 @@ public class HomepageController {
         this.userService = userService;
     }
 
-    @GetMapping("/change")
-    @ResponseBody
-    public String change(){
-       User user = userService.findByUsername("user");
-
-        user.setPassword("pass");
-        userService.saveUser(user);
-        return "ok";
-    }
+//    @GetMapping("/change")
+//    @ResponseBody
+//    public String change(){
+//       User user = userService.findByUsername("user");
+//
+//        user.setPassword("pass");
+//        userService.saveUser(user);
+//        return "ok";
+//    }
 
     @GetMapping
     public String prepareHomepage(Principal principal, Model model) {
