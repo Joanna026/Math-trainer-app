@@ -27,24 +27,30 @@
     </div>
     <div class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%" href="/student/collections">
+            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%"
+               href="/student/collections">
                 Zbiory zadań
             </a>
-            <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+            <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%"
+               href="/student/learnt/all">
                 Zaliczone testy
             </a>
-            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
+            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%"
+               href="/student/exercise/add">
                 Dodaj zadanie
             </a>
         </div>
     </div>
 
 
-    <div  class="navbar-menu">
+    <div class="navbar-menu">
         <div class="navbar-end">
+            <div class="navbar-item has-tekst-info" style="font-size: 30px; margin-right: 5px">
+                ${name}
+            </div>
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium">Wyloguj się</a>
                 </p>
             </div>
         </div>
@@ -61,40 +67,42 @@
 </nav>
 
 
-        <div class="columns is-one-quarter is-multiline is-mobile has-background-warning" style="height: 1000px">
+<div class="columns is-one-quarter is-multiline is-mobile has-background-warning" style="height: 1000px">
 
 
-            <c:forEach items="${collections}" var="collection">
+    <c:forEach items="${collections}" var="collection">
 
-                <div class="box" style="height: 200px; margin-left: 30px; margin-right: 30px; margin-top: 30px">
-                    <article class="media">
-                        <div class="media-content">
-                            <div class="content">
-                                <p style="text-align: center; font-size: larger">
-                                    <strong>${collection.name}</strong>
-                                </p>
+        <div class="box" style="height: 200px; width: 170px; margin-left: 30px; margin-right: 30px; margin-top: 30px">
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <p style="text-align: center; font-size: larger">
+                            <strong>${collection.name}</strong>
+                        </p>
+                    </div>
+                    <nav class="level is-mobile">
+                        <div class="level-item" style="margin-top: 60px">
+                            <div class="buttons is-centered">
+                                <form action="/student/home?collectionId=${collection.id}" method="post">
+                                    <input type="submit" class="button has-background-grey-lighter has-text-grey-darker"
+                                           value="Usuń"/>
+                                </form>
+                                <a class="button is-info"
+                                   href='/student/exercise?index=0&collectionId=${collection.id}'
+                                   style="margin-left: 5px">Start</a>
                             </div>
-                            <nav class="level is-mobile">
-                                <div class="level-item" style="margin-top: 60px">
-                                    <form action="/student/home?collectionId=${collection.id}" method="post">
-                                        <input  type="submit" class="button has-background-grey-lighter has-text-grey-darker"
-                                                value ="Usuń"/>
-                                    </form>
-                                    <a class="button is-info"
-                                       href='/student/exercise?index=0&collectionId=${collection.id}'
-                                       style="margin-left: 30px; margin-right: 30px">Start</a>
-                                </div>
-                            </nav>
                         </div>
-                    </article>
+                    </nav>
                 </div>
-
-            </c:forEach>
+            </article>
         </div>
+
+    </c:forEach>
+</div>
 
 
 <%------FOOTER------%>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 </html>

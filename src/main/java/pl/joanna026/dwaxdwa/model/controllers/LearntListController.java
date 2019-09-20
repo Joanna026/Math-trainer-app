@@ -26,6 +26,7 @@ public class LearntListController {
 
         User user = userService.findByUsername(principal.getName());
         List<LearntCollectionsWithUsers> learntExerciseCollections = user.getLearntCollections();
+        model.addAttribute("name", user.getName());
         model.addAttribute("collections", learntExerciseCollections);
         return "learntCollections";
     }

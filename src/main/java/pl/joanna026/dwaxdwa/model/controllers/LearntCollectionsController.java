@@ -33,7 +33,7 @@ public class LearntCollectionsController {
 
 
     @GetMapping("/{collectionId}")
-    public String moveCollectionToLearnt(Principal principal, @PathVariable Long collectionId) {
+    public String moveCollectionToLearnt(Principal principal, Model model, @PathVariable Long collectionId) {
 
         User user  = userService.findByUsername(principal.getName());
         List<LearntCollectionsWithUsers> learntExerciseCollectionsList = user.getLearntCollections();
@@ -53,7 +53,7 @@ public class LearntCollectionsController {
             }
 
         });
-
+        model.addAttribute("name", user.getName());
 
         return "congrats";
     }

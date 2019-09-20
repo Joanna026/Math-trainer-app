@@ -49,6 +49,9 @@
 
     <div  class="navbar-menu">
         <div class="navbar-end">
+            <div class="navbar-item has-tekst-info" style="font-size: 30px; margin-right: 5px">
+                ${name}
+            </div>
             <div class="navbar-item">
                 <p class="control">
                     <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
@@ -83,10 +86,10 @@
                     </div>
                 </div>
             </div>
-<%--            <div class="column is-mobile">--%>
-<%--               <p>Pozostało powtórzeń:</p>--%>
-<%--                <p class="has-text-weight-bold is-size-2 has-text-danger">${results[index]}</p>--%>
-<%--            </div>--%>
+            <div class="column is-mobile">
+               <p>Pozostało powtórzeń:</p>
+                <p class="has-text-weight-bold is-size-2 has-text-danger">${results[index]}</p>
+            </div>
         </div>
     </div>
 </section>

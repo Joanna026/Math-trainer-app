@@ -31,18 +31,22 @@
             <a class="navbar-item has-text-info" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
                 Zaliczone testy
             </a>
-            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%" href="/student/exercise/add">
+            <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%"
+               href="/student/exercise/add">
                 Dodaj zadanie
             </a>
         </div>
     </div>
 
 
-    <div  class="navbar-menu">
+    <div class="navbar-menu">
         <div class="navbar-end">
+            <div class="navbar-item has-tekst-info" style="font-size: 30px; margin-right: 5px">
+                ${name}
+            </div>
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium">Wyloguj się</a>
                 </p>
             </div>
         </div>
@@ -59,33 +63,35 @@
 
 <div class="columns is-one-quarter is-multiline is-mobile has-background-warning" style="height: 1000px">
 
-        <c:forEach items="${collections}" var="collection">
+    <c:forEach items="${collections}" var="collection">
 
-            <div class="box" style="height: 200px; margin-left: 30px; margin-right: 30px; margin-top: 30px">
-                <article class="media">
-                    <div class="media-content">
-                        <div class="content">
-                            <p style="text-align: center">
-                                <strong>${collection.name}</strong>
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-item" style="margin-top: 60px">
-                                <form action="/student/collections" method="post">
-                                    <input  type="submit" class="level-item button is-info"
-                                            value ="Dodaj"/>
-                                    <input type="hidden" name="collectionId" value="${collection.id}">
-                                </form>
-                            </div>
-                        </nav>
+        <div class="box" style="height: 200px; width: 170px; margin-left: 30px; margin-right: 30px; margin-top: 30px">
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <p style="text-align: center">
+                            <strong>${collection.name}</strong>
+                        </p>
                     </div>
-                </article>
-            </div>
-        </c:forEach>
-    </div>
+                    <nav class="level is-mobile">
+                        <div class="level-item" style="margin-top: 60px">
+                            <form action="/student/collections" method="post">
+                                <div class="buttons is-centered">
+                                    <input type="submit" class="level-item button is-info"
+                                           value="Dodaj"/>
+                                    <input type="hidden" name="collectionId" value="${collection.id}">
+                                </div>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </article>
+        </div>
+    </c:forEach>
+</div>
 
 <%------FOOTER------%>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 </html>

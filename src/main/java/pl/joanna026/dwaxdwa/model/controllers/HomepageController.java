@@ -36,6 +36,7 @@ public class HomepageController {
     public String prepareHomepage(Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
         List<ExerciseCollection> availableExerciseCollections = user.getAvailableExerciseCollection();
+        model.addAttribute("name", user.getName());
         model.addAttribute("collections", availableExerciseCollections);
         return "homepage";
     }

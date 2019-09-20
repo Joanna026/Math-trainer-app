@@ -5,9 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.joanna026.dwaxdwa.model.entities.Exercise;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
+import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
+import pl.joanna026.dwaxdwa.model.services.UserService;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,14 +21,19 @@ import java.util.Optional;
 public class ExerciseController {
 
     private ExerciseCollectionService exerciseCollectionService;
+    private UserService userService;
     private List<Integer> exerciseResults = new ArrayList<>();
 
-    public ExerciseController(ExerciseCollectionService exerciseCollectionService) {
+    public ExerciseController(ExerciseCollectionService exerciseCollectionService, UserService userService) {
         this.exerciseCollectionService = exerciseCollectionService;
+        this.userService = userService;
     }
 
     @GetMapping
-    public String prepareExercisePage(@RequestParam Integer index, @RequestParam Long collectionId, Model model) {
+    public String prepareExercisePage(@RequestParam Integer index, @RequestParam Long collectionId,
+                                      Model model, Principal principal) {
+        User user = userService.findByUsername(principal.getName());
+        model.addAttribute("name", user.getName());
 
         int currentIndex=index;
         Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);

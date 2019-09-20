@@ -40,6 +40,9 @@
 
     <div  class="navbar-menu">
         <div class="navbar-end">
+            <div class="navbar-item has-tekst-info" style="font-size: 30px; margin-right: 5px">
+                ${name}
+            </div>
             <div class="navbar-item">
                 <p class="control">
                     <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
@@ -55,7 +58,7 @@
 <section class="hero is-fullheight has-background-warning">
     <div class="hero-body">
         <div class="container is-centered">
-            <div class="columns is-centered has-text-primary has-text-weight-semibold">
+            <div class="columns is-centered has-text-info has-text-weight-semibold">
                 <p style="font-size: 150px">
                     Brawo!!!
                 </p>

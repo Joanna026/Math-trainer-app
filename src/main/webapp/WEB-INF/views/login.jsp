@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Math Coach</title>
+    <title>DwaxDwa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -52,7 +52,7 @@
                                     <input class="input is-medium is-primary" type="text" name='username'
                                            placeholder="Login">
                                     <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fa fa-user"></i>
                             </span>
                                 </p>
                             </div>
@@ -66,10 +66,9 @@
                                 </p>
                             </div>
                             <p class="control" style="margin-bottom: 10px">
-                            <div class="buttons has-addons is-centered">
-                                <button type="submit" class="button is-info is-medium has-addons is-centered"
+                            <div class="buttons is-centered">
+                                <button type="submit" class="button is-info is-medium is-centered"
                                         id="log-in">
-                                    <i class="fa fa-user" style="margin-right: 5px"></i>
                                     Zaloguj
                                 </button>
                             </div>
