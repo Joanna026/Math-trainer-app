@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: joanna
@@ -22,20 +23,22 @@
     </div>
     <div class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%" href="/student/collections">
+            <a class="navbar-item has-text-danger" style="font-size: 30px; margin-left: 10%"
+               href="/student/collections">
                 Zbiory zadań
             </a>
-            <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%" href="/student/learnt/all">
+            <a class="navbar-item has-text-success" style="font-size: 30px; margin-left: 10%"
+               href="/student/learnt/all">
                 Nauczone
             </a>
         </div>
     </div>
 
-    <div  class="navbar-menu">
+    <div class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/logout" class="button is-danger is-size-4 is-medium" >Wyloguj się</a>
+                    <a href="/logout" class="button is-danger is-size-4 is-medium">Wyloguj się</a>
                 </p>
             </div>
         </div>
@@ -62,6 +65,15 @@
                                             placeholder="Nazwa"/>
                             </p>
                         </div>
+                        <div class="field">
+                            <div class="select is-multiple" style="margin-bottom: 20px">
+                                <select multiple size="4" name="exerciseId">
+                                    <c:forEach items="${exercisesList}" var="exercise">
+                                        <option value="${exercise.id}">${exercise.content}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
                         <div class="buttons is-centered">
                             <p class="control" style="margin-bottom: 10px">
                                 <button class="button is-info is-medium is-centered">
@@ -78,9 +90,8 @@
 </section>
 
 
-
 <%------FOOTER------%>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 </html>
