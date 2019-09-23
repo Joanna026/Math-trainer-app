@@ -39,18 +39,28 @@ public class LearntCollectionsController {
         List<LearntCollectionsWithUsers> learntExerciseCollectionsList = user.getLearntCollections();
         Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);
         optionalCollection.ifPresent(collection-> {
-            LearntCollectionsWithUsers learntCollection = new LearntCollectionsWithUsers();
-            learntCollection.setStudentId(user.getId());
-            learntCollection.setCollectionId(collectionId);
-            learntCollection.setCollectionName(collection.getName());
+            LearntCollectionsWithUsers justLearntCollectionWithUsers = new LearntCollectionsWithUsers();
+            justLearntCollectionWithUsers.setStudentId(user.getId());
+            justLearntCollectionWithUsers.setCollectionId(collectionId);
+            justLearntCollectionWithUsers.setCollectionName(collection.getName());
 
-            LearntCollectionsWithUsers userLearntCollection = learntCollectionsWithUsersService.findByUserAndCollection(user.getId(), collectionId);
+            LearntCollectionsWithUsers userLearntCollection =
+                    learntCollectionsWithUsersService.findByUserAndCollection(user.getId(), collectionId);
             if(!learntExerciseCollectionsList.contains(userLearntCollection)) {
-                learntCollectionsWithUsersService.save(learntCollection);
-                learntExerciseCollectionsList.add(userLearntCollection);
+                learntCollectionsWithUsersService.save(justLearntCollectionWithUsers);
+                learntExerciseCollectionsList.add(justLearntCollectionWithUsers);
                 user.setLearntCollections(learntExerciseCollectionsList);
                 userService.save(user);
             }
+//
+//            LearntCollectionsWithUsers userLearntCollection = learntCollectionsWithUsersService.findByUserAndCollection(user.getId(), collectionId);
+//            if(!learntExerciseCollectionsList.contains(userLearntCollection)) {
+//
+//                learntCollectionsWithUsersService.save(userLearntCollection);
+//                learntExerciseCollectionsList.add(userLearntCollection);
+//                user.setLearntCollections(learntExerciseCollectionsList);
+//                userService.save(user);
+//            }
 
         });
         model.addAttribute("name", user.getName());

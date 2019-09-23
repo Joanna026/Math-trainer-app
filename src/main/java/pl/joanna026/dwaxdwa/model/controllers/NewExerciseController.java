@@ -9,7 +9,7 @@ import pl.joanna026.dwaxdwa.model.entities.Exercise;
 import pl.joanna026.dwaxdwa.model.services.ExerciseService;
 
 @Controller
-@RequestMapping("/student/exercise")
+@RequestMapping("/admin/exercise")
 public class NewExerciseController {
 
     private final ExerciseService exerciseService;
@@ -29,6 +29,6 @@ public class NewExerciseController {
     @PostMapping("/add")
     public String processNewExerciseForm(Exercise exercise) {
         exerciseService.save(exercise);
-        return "redirect:/student/home";
+        return "redirect:/admin/groups/all";
     }
 }

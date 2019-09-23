@@ -39,7 +39,9 @@ public class ExerciseController {
         Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);
         optionalCollection.ifPresent(collection -> {
             List<Exercise> exercises = collection.getExercises();
-            if(currentIndex == 0 && exerciseResults.size() == 0) {
+            if(currentIndex == 0 &&
+                    (exerciseResults.size() == 0) || exerciseResults.stream().allMatch(element -> element == 0)) {
+                exerciseResults.clear();
                 for (Exercise exercise : exercises) {
                     exerciseResults.add(exercise.getRepetitionNumber());
                 }

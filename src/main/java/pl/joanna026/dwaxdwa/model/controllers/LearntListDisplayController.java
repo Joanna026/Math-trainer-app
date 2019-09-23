@@ -13,11 +13,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/student/learnt/all")
-public class LearntListController {
+public class LearntListDisplayController {
 
     private final UserService userService;
 
-    public LearntListController(UserService userService) {
+    public LearntListDisplayController(UserService userService) {
         this.userService = userService;
     }
 
