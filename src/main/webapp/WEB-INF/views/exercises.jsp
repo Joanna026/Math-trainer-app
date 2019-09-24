@@ -83,9 +83,6 @@
                             <input class="input is-info is-large has-text-centered"
                                    style="font-size: 120px; width: 60%; height: 70%; margin-top: 6%; margin-left: 20%; text-align: center"
                                    type="text" name="answer" placeholder="wynik" autofocus="autofocus" id="user-answer">
-<%--                                    <span class="icon is-large is-right has-text-success" style="margin-top: 10%">--%>
-<%--                                        <i class="fas fa-check fa-3x"></i>--%>
-<%--                                    </span>--%>
                                 </p>
                             </div>
                             <input type="hidden" name="correctAnswer" value="${exercise.correctAnswer}" id="correct-answer"/>

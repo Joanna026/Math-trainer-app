@@ -64,15 +64,23 @@
 
         <article class="message is-dark" style="margin-right: 10%; margin-left: 10%">
             <div class="message-header">
-                <p>${group.name}</p>
+                <p style="font-size: large">${group.name}</p>
                 <button class="button is-dark is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="message-body">
-                <c:forEach items="${group.studentList}" var="student">
-                <p>${student.name}</p>
-                </c:forEach>
+                <aside class="menu">
+                    <c:forEach items="${group.studentList}" var="student">
+                        <div class="menu-list">
+                            <a><strong class="name" style="text-underline: none">${student.name}</strong></a>
+                               <div class="single-student">
+                                    <c:forEach items="${student.learntCollections}" var="collection">
+                                        <li style="text-underline: gray">${collection.collectionName}  ${collection.finishedAt}</li>
+                                    </c:forEach>
+                                </div>
+                    </c:forEach>
+                </aside>
             </div>
         </article>
 
@@ -82,7 +90,7 @@
 
 <%------FOOTER------%>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 
 <%------JS SCRIPT------%>
 

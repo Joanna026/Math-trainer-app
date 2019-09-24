@@ -15,11 +15,24 @@ $(() => {
                $(descriptionDiv).slideToggle();
            }
         });
-
     };
 
+    const addEventToStudentName = function () {
+
+        groupList.on("click", e => {
+            console.log(e.target);
+           if (e.target.tagName === "STRONG") {
+               console.log(e.target.parentElement.nextElementSibling);
+               $(e.target.parentElement.nextElementSibling).slideToggle();
+           }
+        });
+    };
+
+
     $(".message-body").hide();
+    $(".single-student").hide();
     addEventToDropdownBtn();
+    addEventToStudentName();
 
 
     // ------------EXERCISE SOLVING PAGE-------------- //
@@ -27,7 +40,6 @@ $(() => {
     const form = $("#exercise-solve");
 
     form.submit(() => {
-
         const correctAnswer = $("#correct-answer").val();
         let answerInput = $("#user-answer");
         const okIcon = $(` <span class="icon is-large is-right has-text-success" style="margin-top: 10%"> 
@@ -40,8 +52,7 @@ $(() => {
         } else {
             answerInput.after(nokIcon);
         }
-        setTimeout(() => {}, 1200);
+        setTimeout(() => {}, 3000);
         return true;
     });
-
 });
