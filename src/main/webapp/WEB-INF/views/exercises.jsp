@@ -74,17 +74,23 @@
                 </p>
             </div>
             <div class="columns is-mobile is-centered">
-                <div class="field">
-                    <div class="control has-icons-right" style="display: inline-block">
+
+                    <div>
                         <form action="${pageContext.request.contextPath}/student/exercise?index=${index}&collectionId=${collectionId}"
-                              method="post">
+                              method="post" class="" id="exercise-solve">
+                            <div class="field">
+                                <p class="control has-icons-right">
                             <input class="input is-info is-large has-text-centered"
                                    style="font-size: 120px; width: 60%; height: 70%; margin-top: 6%; margin-left: 20%; text-align: center"
-                                   type="text" name="answer" placeholder="wynik" autofocus="autofocus"/>
-                            <input type="hidden" name="correctAnswer" value="${exercise.correctAnswer}"/>
+                                   type="text" name="answer" placeholder="wynik" autofocus="autofocus" id="user-answer">
+<%--                                    <span class="icon is-large is-right has-text-success" style="margin-top: 10%">--%>
+<%--                                        <i class="fas fa-check fa-3x"></i>--%>
+<%--                                    </span>--%>
+                                </p>
+                            </div>
+                            <input type="hidden" name="correctAnswer" value="${exercise.correctAnswer}" id="correct-answer"/>
                         </form>
                     </div>
-                </div>
             </div>
             <div class="column is-mobile">
                <p>Pozostało powtórzeń:</p>
@@ -104,5 +110,12 @@
         </a>
     </div>
 </section>
+
+
+<%------JS SCRIPT------%>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/groupList.js"></script>
+
 </body>
 </html>

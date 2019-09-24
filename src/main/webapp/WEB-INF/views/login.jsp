@@ -50,7 +50,7 @@
                             <div class="field">
                                 <p class="control has-icons-left" style="margin-bottom: 20px">
                                     <input class="input is-medium is-primary" type="text" name='username'
-                                           placeholder="Login">
+                                           autofocus="autofocus" placeholder="Login">
                                     <span class="icon is-small is-left">
                                 <i class="fa fa-user"></i>
                             </span>
