@@ -5,21 +5,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.entities.User;
+import pl.joanna026.dwaxdwa.model.services.StudentGroupService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
-@RequestMapping("/student/home")
+@RequestMapping("/home")
 public class HomepageController {
 
     private final UserService userService;
+    private final StudentGroupService studentGroupService;
 
 
-    public HomepageController(UserService userService) {
+    public HomepageController(UserService userService, StudentGroupService studentGroupService) {
         this.userService = userService;
+        this.studentGroupService = studentGroupService;
     }
 
 //    @GetMapping("/change")
@@ -38,6 +40,7 @@ public class HomepageController {
         List<ExerciseCollection> availableExerciseCollections = user.getAvailableExerciseCollection();
         model.addAttribute("name", user.getName());
         model.addAttribute("collections", availableExerciseCollections);
+        model.addAttribute("groups", studentGroupService.findAll());
         return "homepage";
     }
 
@@ -45,7 +48,7 @@ public class HomepageController {
     public String processHomepage(@RequestParam Long collectionId, Principal principal) {
 
         userService.removeFromAvailableCollections(principal, collectionId);
-        return "redirect:/student/home";
+        return "redirect:/home";
     }
 
 }
