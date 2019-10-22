@@ -11,7 +11,7 @@ $(() => {
            if (e.target.tagName === "BUTTON" || e.target.parentElement.tagName === "BUTTON"
                || e.target.parentElement.parentElement.tagName === "BUTTON") {
                const parentDiv = e.target.closest("div");
-               const descriptionDiv = parentDiv.nextElementSibling;
+               const descriptionDiv = parentDiv.nextElementSibling.parentElement.nextElementSibling;
                $(descriptionDiv).slideToggle();
            }
         });
@@ -21,8 +21,7 @@ $(() => {
 
         groupList.on("click", e => {
             console.log(e.target);
-           if (e.target.tagName === "STRONG") {
-               console.log(e.target.parentElement.nextElementSibling);
+           if (e.target.tagName === "STRONG" || e.target.firstElementChild.tagName === "STRONG") {
                $(e.target.parentElement.nextElementSibling).slideToggle();
            }
         });

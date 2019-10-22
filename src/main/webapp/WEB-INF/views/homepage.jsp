@@ -84,23 +84,40 @@
 
             <article class="message is-dark" style="margin-right: 10%; margin-left: 10%">
                 <div class="message-header">
-                    <p style="font-size: large">${group.name}</p>
-                    <button class="button is-dark is-small">
-                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </button>
+                    <div class="field is-grouped">
+                        <p style="font-size: large">${group.name}</p>
+                        <button class="button is-dark is-small">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <a class="button is info" href="">Przydziel zbiór zadań</a>
                 </div>
                 <div class="message-body">
-                    <aside class="menu">
-                        <c:forEach items="${group.studentList}" var="student">
-                        <div class="menu-list">
-                            <a><strong class="name" style="text-underline: none">${student.name}</strong></a>
-                            <div class="single-student">
-                                <c:forEach items="${student.learntCollections}" var="collection">
-                                    <li style="text-underline: gray">${collection.collectionName} ${collection.finishedAt}</li>
-                                </c:forEach>
-                            </div>
+                    <div class="columns">
+                        <aside class="menu column-is-two-thirds">
+                            Zapisani uczniowie
+                            <c:forEach items="${group.studentList}" var="student">
+                                <div class="menu-list">
+                                    <a><strong class="name" style="text-underline: none">${student.name}</strong></a>
+                                    <div class="single-student">
+                                        <c:if test="${student.learntCollections == null}">
+                                            <p>Brak zaliczonych testów</p>
+                                        </c:if>
+                                        <c:forEach items="${student.learntCollections}" var="collection">
+                                            <li style="text-underline: gray">${collection.collectionName} ${collection.finishedAt}</li>
+                                        </c:forEach>
+                                    </div>
+                                </div>
                             </c:forEach>
-                    </aside>
+                        </aside>
+
+                        <div class="column">
+                            Przydzielone zbiory zadań
+                            <c:forEach items="${group.obligatoryCollections}" var="collection">
+                                <p>sd</p>
+                            </c:forEach>
+                        </div>
+                    </div>
                 </div>
             </article>
 

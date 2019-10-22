@@ -29,6 +29,6 @@ public class NewExerciseController {
     @PostMapping("/add")
     public String processNewExerciseForm(Exercise exercise) {
         exerciseService.save(exercise);
-        return "redirect:/admin/groups/all";
+        return "redirect:/home";
     }
 }

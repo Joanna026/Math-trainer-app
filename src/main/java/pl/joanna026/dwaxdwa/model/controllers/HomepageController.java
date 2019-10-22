@@ -40,7 +40,7 @@ public class HomepageController {
         List<ExerciseCollection> availableExerciseCollections = user.getAvailableExerciseCollection();
         model.addAttribute("name", user.getName());
         model.addAttribute("collections", availableExerciseCollections);
-        model.addAttribute("groups", studentGroupService.findAll());
+        model.addAttribute("groups", studentGroupService.findAllWithCollections());
         return "homepage";
     }
 

@@ -30,7 +30,7 @@
 
             <sec:authorize access="hasRole('STUDENT')">
                 <a class="navbar-item has-text-primary" style="font-size: 30px; margin-left: 10%"
-                   href="/student/collections">
+                   href="/all/collections">
                     Zbiory zadań
                 </a>
             </sec:authorize>

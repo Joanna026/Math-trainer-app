@@ -16,6 +16,8 @@ public class StudentGroup {
     private String name;
     @OneToMany (mappedBy = "group")
     private List<User> studentList = new ArrayList<>();
+    @ManyToMany
+    private List<ExerciseCollection> obligatoryCollections = new ArrayList<>();
 
     public StudentGroup() {
     }

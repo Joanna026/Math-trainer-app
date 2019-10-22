@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-@RequestMapping("/student/collections")
+@RequestMapping("/all/collections")
 public class CollectionController {
 
     private final ExerciseCollectionService exerciseCollectionService;
@@ -39,7 +39,7 @@ public class CollectionController {
     public String processAllCollectionsPage(Principal principal, @RequestParam Long collectionId) {
 
         userService.addToAvailableCollections(principal,collectionId);
-       return "redirect:/student/home";
+       return "redirect:/home";
     }
 
 

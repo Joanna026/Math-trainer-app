@@ -1,7 +1,12 @@
 package pl.joanna026.dwaxdwa.model.utils;
 
+import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
+import pl.joanna026.dwaxdwa.model.entities.User;
+
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentGroupUpdateDTO {
 
@@ -10,6 +15,8 @@ public class StudentGroupUpdateDTO {
     private Long id;
     @NotNull
     private String name;
+    private List<User> studentList;
+    private List<ExerciseCollection> obligatoryCollections = new ArrayList<>();
 
     public Long getId() {
         return id;

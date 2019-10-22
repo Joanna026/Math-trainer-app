@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/student/collection")
+@RequestMapping("/admin/collection")
 public class NewCollectionController {
 
     private final ExerciseCollectionService exerciseCollectionService;
@@ -49,6 +49,6 @@ public class NewCollectionController {
         }
         collectionDto.setExercises(exercisesToAdd);
         exerciseCollectionService.save(collectionDto);
-        return "redirect:/student/collections";
+        return "redirect:/all/collections";
     }
 }
