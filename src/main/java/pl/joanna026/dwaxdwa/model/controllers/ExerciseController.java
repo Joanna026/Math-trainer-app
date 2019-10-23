@@ -8,6 +8,7 @@ import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
+import pl.joanna026.dwaxdwa.model.utils.UserDTO;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -32,8 +33,8 @@ public class ExerciseController {
     @GetMapping
     public String prepareExercisePage(@RequestParam Integer index, @RequestParam Long collectionId,
                                       Model model, Principal principal) {
-        User user = userService.findByUsername(principal.getName());
-        model.addAttribute("name", user.getName());
+        UserDTO userDTO = userService.findByUsername(principal.getName());
+        model.addAttribute("name", userDTO.getName());
 
         int currentIndex=index;
         Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);

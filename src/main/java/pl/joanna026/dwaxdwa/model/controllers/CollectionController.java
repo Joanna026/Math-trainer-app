@@ -7,6 +7,7 @@ import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
+import pl.joanna026.dwaxdwa.model.utils.UserDTO;
 
 import java.security.Principal;
 import java.util.List;
@@ -26,8 +27,8 @@ public class CollectionController {
 
     @GetMapping
     public String prepareAllCollectionsPage(Model model, Principal principal) {
-        User user = userService.findByUsername(principal.getName());
-        model.addAttribute("name", user.getName());
+        UserDTO userDTO = userService.findByUsername(principal.getName());
+        model.addAttribute("name", userDTO.getName());
         List<ExerciseCollection> exerciseCollections = exerciseCollectionService.findBy();
         for (ExerciseCollection collection : exerciseCollections) {
             model.addAttribute("collections", exerciseCollections);

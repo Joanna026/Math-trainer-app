@@ -28,4 +28,6 @@ public class WebAppConfig implements WebMvcConfigurer {
         config.setJdbcUrl(dbUrl);
         return new HikariDataSource(config);
     }
+
+
 }

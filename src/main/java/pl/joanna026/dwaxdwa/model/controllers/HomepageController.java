@@ -7,6 +7,7 @@ import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.StudentGroupService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
+import pl.joanna026.dwaxdwa.model.utils.UserDTO;
 
 import java.security.Principal;
 import java.util.List;
@@ -36,9 +37,9 @@ public class HomepageController {
 
     @GetMapping
     public String prepareHomepage(Principal principal, Model model) {
-        User user = userService.findByUsername(principal.getName());
-        List<ExerciseCollection> availableExerciseCollections = user.getAvailableExerciseCollection();
-        model.addAttribute("name", user.getName());
+        UserDTO userDTO = userService.findByUsername(principal.getName());
+        List<ExerciseCollection> availableExerciseCollections = userDTO.getAvailableExerciseCollection();
+        model.addAttribute("name", userDTO.getName());
         model.addAttribute("collections", availableExerciseCollections);
         model.addAttribute("groups", studentGroupService.findAllWithCollections());
         return "homepage";

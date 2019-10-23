@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.joanna026.dwaxdwa.model.entities.Role;
 import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.RoleService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
+import pl.joanna026.dwaxdwa.model.utils.UserDTO;
 
 @Controller
 @RequestMapping("/user")
@@ -27,10 +27,10 @@ public class UserController {
 
     @GetMapping ("/create")
     public String createUser() {
-        User user = new User();
-        user.setUsername("user2");
-        user.setPassword("pass2");
-        userService.saveUser(user);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername("user2");
+        userDTO.setPassword("pass2");
+        userService.saveUser(userDTO);
         return "ok";
     }
 
@@ -41,10 +41,9 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String processRegisterPage(User user){
-        user.setId(null);
-        System.out.println(user);
-        userService.saveUser(user);
+    public String processRegisterPage(UserDTO userDTO){
+        userDTO.setId(null);
+        userService.saveUser(userDTO);
         return "redirect:/login";
     }
 

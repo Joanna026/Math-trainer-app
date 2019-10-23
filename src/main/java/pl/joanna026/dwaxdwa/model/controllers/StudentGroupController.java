@@ -4,9 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.joanna026.dwaxdwa.model.entities.StudentGroup;
 import pl.joanna026.dwaxdwa.model.repositories.StudentGroupRepository;
-import pl.joanna026.dwaxdwa.model.utils.DTO;
-import pl.joanna026.dwaxdwa.model.utils.StudentGroupCreateDTO;
-import pl.joanna026.dwaxdwa.model.utils.StudentGroupUpdateDTO;
 
 import java.util.List;
 
@@ -26,13 +23,13 @@ public class StudentGroupController {
     }
 
     @PostMapping
-    public void createStudentGroup(@DTO(StudentGroupCreateDTO.class)StudentGroup studentGroup) {
+    public void createStudentGroup(StudentGroup studentGroup) {
         studentGroupRepository.save(studentGroup);
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void editStudentGroup(@DTO(StudentGroupUpdateDTO.class)StudentGroup studentGroup) {
+    public void editStudentGroup(StudentGroup studentGroup) {
         studentGroupRepository.save(studentGroup);
     }
 }

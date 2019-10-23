@@ -11,6 +11,7 @@ import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
 import pl.joanna026.dwaxdwa.model.services.LearntCollectionsWithUsersService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
+import pl.joanna026.dwaxdwa.model.utils.UserDTO;
 
 import java.security.Principal;
 import java.util.List;
@@ -35,22 +36,22 @@ public class LearntCollectionsController {
     @GetMapping("/{collectionId}")
     public String moveCollectionToLearnt(Principal principal, Model model, @PathVariable Long collectionId) {
 
-        User user  = userService.findByUsername(principal.getName());
-        List<LearntCollectionsWithUsers> learntExerciseCollectionsList = user.getLearntCollections();
+        UserDTO userDTO  = userService.findByUsername(principal.getName());
+        List<LearntCollectionsWithUsers> learntExerciseCollectionsList = userDTO.getLearntCollections();
         Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);
         optionalCollection.ifPresent(collection-> {
             LearntCollectionsWithUsers justLearntCollectionWithUsers = new LearntCollectionsWithUsers();
-            justLearntCollectionWithUsers.setStudentId(user.getId());
+            justLearntCollectionWithUsers.setStudentId(userDTO.getId());
             justLearntCollectionWithUsers.setCollectionId(collectionId);
             justLearntCollectionWithUsers.setCollectionName(collection.getName());
 
             LearntCollectionsWithUsers userLearntCollection =
-                    learntCollectionsWithUsersService.findByUserAndCollection(user.getId(), collectionId);
+                    learntCollectionsWithUsersService.findByUserAndCollection(userDTO.getId(), collectionId);
             if(!learntExerciseCollectionsList.contains(userLearntCollection)) {
                 learntCollectionsWithUsersService.save(justLearntCollectionWithUsers);
                 learntExerciseCollectionsList.add(justLearntCollectionWithUsers);
-                user.setLearntCollections(learntExerciseCollectionsList);
-                userService.save(user);
+                userDTO.setLearntCollections(learntExerciseCollectionsList);
+                userService.save(userDTO);
             }
 //
 //            LearntCollectionsWithUsers userLearntCollection = learntCollectionsWithUsersService.findByUserAndCollection(user.getId(), collectionId);
@@ -63,7 +64,7 @@ public class LearntCollectionsController {
 //            }
 
         });
-        model.addAttribute("name", user.getName());
+        model.addAttribute("name", userDTO.getName());
 
         return "congrats";
     }
