@@ -29,11 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
-////
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return  PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -63,6 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .requiresChannel()
+                .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                .requiresSecure()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/static/**").permitAll()
                 .antMatchers("/register", "/").anonymous()
