@@ -1,8 +1,22 @@
 package pl.joanna026.dwaxdwa.model.services;
 
+import org.springframework.stereotype.Service;
 import pl.joanna026.dwaxdwa.model.entities.Role;
+import pl.joanna026.dwaxdwa.model.repositories.RoleRepository;
 
-public interface RoleService  {
+import javax.transaction.Transactional;
 
-    Role findByAuthority(String authority);
+@Service
+@Transactional
+public class RoleService {
+
+    private final RoleRepository roleRepository;
+
+    public RoleService(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
+
+    public Role findByAuthority(String authority) {
+        return roleRepository.findByAuthority(authority);
+    }
 }

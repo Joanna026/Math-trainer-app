@@ -1,14 +1,44 @@
 package pl.joanna026.dwaxdwa.model.services;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 import pl.joanna026.dwaxdwa.model.entities.Exercise;
+import pl.joanna026.dwaxdwa.model.repositories.ExerciseRepository;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCreateDTO;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public interface ExerciseService  {
+@Service
+@Transactional
+public class ExerciseService {
 
-    Exercise findById(Long id);
+    private final ExerciseRepository exerciseRepository;
+    private final ModelMapper modelMapper;
 
-    void save(Exercise exercise);
+    public ExerciseService(ExerciseRepository exerciseRepository, ModelMapper modelMapper) {
+        this.exerciseRepository = exerciseRepository;
+        this.modelMapper = modelMapper;
+    }
 
-    List<Exercise> findAll();
+    private ExerciseCreateDTO convertToDto(Exercise exercise) {
+        return modelMapper.map(exercise, ExerciseCreateDTO.class);
+    }
+
+    private Exercise convertToEntity(ExerciseCreateDTO exerciseCreateDTO) {
+        return modelMapper.map(exerciseCreateDTO, Exercise.class);
+    }
+
+    public Exercise findById(Long id) {
+        return null;
+    }
+
+    public void save(Exercise exercise) {
+        exercise.setId(null);
+        exerciseRepository.save(exercise);
+    }
+
+    public List<Exercise> findAll() {
+        return exerciseRepository.findAll();
+    }
 }

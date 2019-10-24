@@ -6,7 +6,7 @@ import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.entities.VerificationToken;
 import pl.joanna026.dwaxdwa.model.repositories.TokenRepository;
 import pl.joanna026.dwaxdwa.model.repositories.UserRepository;
-import pl.joanna026.dwaxdwa.model.utils.TokenDTO;
+import pl.joanna026.dwaxdwa.model.DTO.TokenDTO;
 
 import javax.transaction.Transactional;
 import java.util.Optional;

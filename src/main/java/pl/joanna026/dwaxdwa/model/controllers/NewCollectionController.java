@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.joanna026.dwaxdwa.model.entities.Exercise;
-import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
-import pl.joanna026.dwaxdwa.model.services.ExerciseService;
-import pl.joanna026.dwaxdwa.model.utils.ExerciseCollectionCreateDTO;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionCreateDTO;
 
 import javax.validation.Valid;
 import java.util.ArrayList;

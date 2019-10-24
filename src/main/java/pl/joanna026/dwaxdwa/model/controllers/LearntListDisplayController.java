@@ -5,9 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.joanna026.dwaxdwa.model.entities.LearntCollectionsWithUsers;
-import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.services.UserService;
-import pl.joanna026.dwaxdwa.model.utils.UserDTO;
+import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 
 import java.security.Principal;
 import java.util.List;

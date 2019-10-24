@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.entities.LearntCollectionsWithUsers;
-import pl.joanna026.dwaxdwa.model.entities.User;
-import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
-import pl.joanna026.dwaxdwa.model.services.LearntCollectionsWithUsersService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
-import pl.joanna026.dwaxdwa.model.utils.UserDTO;
+import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 
 import java.security.Principal;
 import java.util.List;

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.joanna026.dwaxdwa.model.entities.Exercise;
-import pl.joanna026.dwaxdwa.model.services.ExerciseService;
 
 @Controller
 @RequestMapping("/admin/exercise")

@@ -1,4 +1,4 @@
-package pl.joanna026.dwaxdwa.model.utils;
+package pl.joanna026.dwaxdwa.model.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

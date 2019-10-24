@@ -11,7 +11,7 @@ import pl.joanna026.dwaxdwa.model.entities.User;
 import pl.joanna026.dwaxdwa.model.repositories.ExerciseCollectionRepository;
 import pl.joanna026.dwaxdwa.model.repositories.RoleRepository;
 import pl.joanna026.dwaxdwa.model.repositories.UserRepository;
-import pl.joanna026.dwaxdwa.model.utils.UserDTO;
+import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 
 import javax.transaction.Transactional;
 import java.security.Principal;
