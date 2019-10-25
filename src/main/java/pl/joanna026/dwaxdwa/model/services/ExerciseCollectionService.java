@@ -39,4 +39,5 @@ public class ExerciseCollectionService{
         ExerciseCollection collectionToAdd = convertToEntity(collectionDto);
         exerciseCollectionRepository.save(collectionToAdd);
     }
+
 }

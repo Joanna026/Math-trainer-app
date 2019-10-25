@@ -1,5 +1,8 @@
 package pl.joanna026.dwaxdwa.model.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
@@ -7,12 +10,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "student_groups")
-public class StudentGroup {
+@Getter @Setter
+public class StudentGroup extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotEmpty
+
+    @Column(nullable = false)
     private String name;
     @OneToMany (mappedBy = "group")
     private List<User> studentList = new ArrayList<>();
@@ -22,29 +24,6 @@ public class StudentGroup {
     public StudentGroup() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<User> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<User> studentList) {
-        this.studentList = studentList;
-    }
 
     @Override
     public String toString() {

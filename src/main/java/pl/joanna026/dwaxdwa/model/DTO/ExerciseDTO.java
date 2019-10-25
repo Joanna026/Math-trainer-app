@@ -3,7 +3,7 @@ package pl.joanna026.dwaxdwa.model.DTO;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-public class ExerciseUpdateDTO {
+public class ExerciseDTO {
 
     @Id
     @NotNull
