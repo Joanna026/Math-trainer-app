@@ -2,10 +2,14 @@ package pl.joanna026.dwaxdwa.model.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
-import pl.joanna026.dwaxdwa.model.services.UserService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionDTO;
 import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
+import pl.joanna026.dwaxdwa.model.services.StudentGroupService;
+import pl.joanna026.dwaxdwa.model.services.UserService;
 
 import java.security.Principal;
 import java.util.List;
@@ -36,7 +40,7 @@ public class HomepageController {
     @GetMapping
     public String prepareHomepage(Principal principal, Model model) {
         UserDTO userDTO = userService.findByUsername(principal.getName());
-        List<ExerciseCollection> availableExerciseCollections = userDTO.getAvailableExerciseCollection();
+        List<ExerciseCollectionDTO> availableExerciseCollections = userDTO.getAvailableExerciseCollection();
         model.addAttribute("name", userDTO.getName());
         model.addAttribute("collections", availableExerciseCollections);
         model.addAttribute("groups", studentGroupService.findAllWithCollections());

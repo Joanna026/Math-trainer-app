@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.joanna026.dwaxdwa.model.entities.User;
-import pl.joanna026.dwaxdwa.model.services.UserService;
 import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
+import pl.joanna026.dwaxdwa.model.services.RoleService;
+import pl.joanna026.dwaxdwa.model.services.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -35,7 +35,7 @@ public class UserController {
 
     @GetMapping("/add")
     public String prepareRegisterPage(Model model) {
-        model.addAttribute(new User());
+        model.addAttribute(new UserDTO());
         return "register";
     }
 

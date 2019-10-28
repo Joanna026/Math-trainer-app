@@ -3,8 +3,11 @@ package pl.joanna026.dwaxdwa.model.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionDTO;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseDTO;
 import pl.joanna026.dwaxdwa.model.entities.Exercise;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
+import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
 import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 
@@ -35,14 +38,14 @@ public class ExerciseController {
         model.addAttribute("name", userDTO.getName());
 
         int currentIndex=index;
-        Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);
-        optionalCollection.ifPresent(collection -> {
-            List<Exercise> exercises = collection.getExercises();
+        ExerciseCollectionDTO foundCollection = exerciseCollectionService.findById(collectionId);
+
+            List<ExerciseDTO> exercises = foundCollection.getExercises();
             if(currentIndex == 0 &&
                     (exerciseResults.size() == 0) || exerciseResults.stream().allMatch(element -> element == 0)) {
                 exerciseResults.clear();
-                for (Exercise exercise : exercises) {
-                    exerciseResults.add(exercise.getRepetitionNumber());
+                for (ExerciseDTO exerciseDTO : exercises) {
+                    exerciseResults.add(exerciseDTO.getRepetitionNumber());
                 }
                 model.addAttribute("results", exerciseResults);
                 model.addAttribute("size", exercises.size());
@@ -50,7 +53,6 @@ public class ExerciseController {
             model.addAttribute("collectionId", collectionId);
             model.addAttribute("exercise", exercises.get(currentIndex));
             model.addAttribute("index", currentIndex);
-        });
         return "exercises";
     }
 

@@ -2,10 +2,9 @@ package pl.joanna026.dwaxdwa.model.services;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import pl.joanna026.dwaxdwa.model.DTO.StudentGroupDTO;
 import pl.joanna026.dwaxdwa.model.entities.StudentGroup;
 import pl.joanna026.dwaxdwa.model.repositories.StudentGroupRepository;
-import pl.joanna026.dwaxdwa.model.DTO.StudentGroupCreateDTO;
-import pl.joanna026.dwaxdwa.model.DTO.StudentGroupUpdateDTO;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -23,33 +22,36 @@ public class StudentGroupService {
         this.modelMapper = modelMapper;
     }
 
-    public List<StudentGroup> findAll() {
+    public List<StudentGroupDTO> findAll() {
 
-        return  studentGroupRepository.findAll();
-
-    }
-
-    private StudentGroupCreateDTO convertToDto(StudentGroup studentGroup) {
-        return modelMapper.map(studentGroup, StudentGroupCreateDTO.class);
-    }
-
-    private StudentGroupUpdateDTO convertToUpdateDto(StudentGroup studentGroup) {
-        return modelMapper.map(studentGroup, StudentGroupUpdateDTO.class);
+        List<StudentGroup> allGroups = studentGroupRepository.findAll();
+        List<StudentGroupDTO> allGroupsDTO = new ArrayList<>(1);
+        allGroups.forEach(group -> {
+            allGroupsDTO.add(toDto(group));
+        });
+        return allGroupsDTO;
     }
 
 
-    private StudentGroup convertToEnttity(StudentGroupCreateDTO studentGroupCreateDTO) {
-        return modelMapper.map(studentGroupCreateDTO, StudentGroup.class);
-    }
-
-    public List<StudentGroupUpdateDTO> findAllWithCollections() {
+    public List<StudentGroupDTO> findAllWithCollections() {
 
         List<StudentGroup> allWithCollections = studentGroupRepository.findAllWithCollections();
-        List<StudentGroupUpdateDTO> allWithCollectionsDTO = new ArrayList<>();
+        List<StudentGroupDTO> allWithCollectionsDTO = new ArrayList<>();
         allWithCollections.forEach(c -> {
-           allWithCollectionsDTO.add(convertToUpdateDto(c));
+            allWithCollectionsDTO.add(toDto(c));
         });
-
         return allWithCollectionsDTO;
+    }
+
+    private StudentGroupDTO toDto(StudentGroup studentGroup) {
+        return modelMapper.map(studentGroup, StudentGroupDTO.class);
+    }
+
+    private StudentGroup toEntity(StudentGroupDTO studentGroupDTO) {
+        return modelMapper.map(studentGroupDTO, StudentGroup.class);
+    }
+
+    public void save(StudentGroupDTO studentGroupDTO) {
+        studentGroupRepository.save(toEntity(studentGroupDTO));
     }
 }

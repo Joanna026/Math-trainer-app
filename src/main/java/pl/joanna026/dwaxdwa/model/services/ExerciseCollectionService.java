@@ -2,9 +2,9 @@ package pl.joanna026.dwaxdwa.model.services;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionDTO;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.repositories.ExerciseCollectionRepository;
-import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionCreateDTO;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ExerciseCollectionService{
+public class ExerciseCollectionService {
 
     private final ModelMapper modelMapper;
     private final ExerciseCollectionRepository exerciseCollectionRepository;
@@ -22,12 +22,10 @@ public class ExerciseCollectionService{
         this.exerciseCollectionRepository = exerciseCollectionRepository;
     }
 
-    private ExerciseCollection convertToEntity(ExerciseCollectionCreateDTO collectionDto) {
-        return modelMapper.map(collectionDto, ExerciseCollection.class);
-    }
-
-    public Optional<ExerciseCollection> findById(Long id) {
-        return exerciseCollectionRepository.findById(id);
+    public ExerciseCollectionDTO findById(Long id) {
+        return toDto(exerciseCollectionRepository.findById(id).orElseGet(() -> {
+            return null;
+        }));
     }
 
     public List<ExerciseCollection> findBy() {
@@ -35,9 +33,15 @@ public class ExerciseCollectionService{
         return exerciseCollectionRepository.findBy();
     }
 
-    public void save(ExerciseCollectionCreateDTO collectionDto) {
-        ExerciseCollection collectionToAdd = convertToEntity(collectionDto);
-        exerciseCollectionRepository.save(collectionToAdd);
+    public void save(ExerciseCollectionDTO exerciseCollectionDTO) {
+        exerciseCollectionRepository.save(toEntity(exerciseCollectionDTO));
     }
 
+    private ExerciseCollection toEntity(ExerciseCollectionDTO exerciseCollectionDTO) {
+        return modelMapper.map(exerciseCollectionDTO, ExerciseCollection.class);
+    }
+
+    private ExerciseCollectionDTO toDto(ExerciseCollection exerciseCollection) {
+        return modelMapper.map(exerciseCollection, ExerciseCollectionDTO.class);
+    }
 }

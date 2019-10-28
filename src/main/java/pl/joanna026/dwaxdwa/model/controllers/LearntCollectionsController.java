@@ -5,8 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionDTO;
+import pl.joanna026.dwaxdwa.model.DTO.LearntCollectionsWithUsersDTO;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
 import pl.joanna026.dwaxdwa.model.entities.LearntCollectionsWithUsers;
+import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
+import pl.joanna026.dwaxdwa.model.services.LearntCollectionsWithUsersService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
 import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 
@@ -34,13 +38,13 @@ public class LearntCollectionsController {
     public String moveCollectionToLearnt(Principal principal, Model model, @PathVariable Long collectionId) {
 
         UserDTO userDTO  = userService.findByUsername(principal.getName());
-        List<LearntCollectionsWithUsers> learntExerciseCollectionsList = userDTO.getLearntCollections();
-        Optional<ExerciseCollection> optionalCollection = exerciseCollectionService.findById(collectionId);
-        optionalCollection.ifPresent(collection-> {
-            LearntCollectionsWithUsers justLearntCollectionWithUsers = new LearntCollectionsWithUsers();
+        List<LearntCollectionsWithUsersDTO> learntExerciseCollectionsList = userDTO.getLearntCollections();
+        ExerciseCollectionDTO exerciseCollectionDTO = exerciseCollectionService.findById(collectionId);
+
+            LearntCollectionsWithUsersDTO justLearntCollectionWithUsers = new LearntCollectionsWithUsersDTO();
             justLearntCollectionWithUsers.setStudentId(userDTO.getId());
             justLearntCollectionWithUsers.setCollectionId(collectionId);
-            justLearntCollectionWithUsers.setCollectionName(collection.getName());
+            justLearntCollectionWithUsers.setCollectionName(exerciseCollectionDTO.getName());
 
             LearntCollectionsWithUsers userLearntCollection =
                     learntCollectionsWithUsersService.findByUserAndCollection(userDTO.getId(), collectionId);
@@ -60,7 +64,6 @@ public class LearntCollectionsController {
 //                userService.save(user);
 //            }
 
-        });
         model.addAttribute("name", userDTO.getName());
 
         return "congrats";

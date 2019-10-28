@@ -1,12 +1,12 @@
 package pl.joanna026.dwaxdwa.model.DTO;
 
-import javax.persistence.Id;
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
+@Data
 public class ExerciseDTO {
 
-    @Id
-    @NotNull
     private Long id;
     @NotNull
     private String content;
@@ -14,36 +14,6 @@ public class ExerciseDTO {
     private String correctAnswer;
     @NotNull
     private Boolean type;
+    private Integer repetitionNumber;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-    public Boolean getType() {
-        return type;
-    }
-
-    public void setType(Boolean type) {
-        this.type = type;
-    }
 }

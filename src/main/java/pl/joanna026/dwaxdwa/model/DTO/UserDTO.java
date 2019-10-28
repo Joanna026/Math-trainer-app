@@ -1,8 +1,6 @@
 package pl.joanna026.dwaxdwa.model.DTO;
 
 import lombok.Data;
-import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
-import pl.joanna026.dwaxdwa.model.entities.LearntCollectionsWithUsers;
 import pl.joanna026.dwaxdwa.model.entities.Role;
 import pl.joanna026.dwaxdwa.model.entities.StudentGroup;
 
@@ -26,6 +24,6 @@ public class UserDTO {
     @NotBlank
     private String email;
     private StudentGroup group;
-    private List<ExerciseCollection> availableExerciseCollection = new ArrayList<>();
-    private List<LearntCollectionsWithUsers> learntCollections = new ArrayList<>();
+    private List<ExerciseCollectionDTO> availableExerciseCollection = new ArrayList<>();
+    private List<LearntCollectionsWithUsersDTO> learntCollections = new ArrayList<>();
 }

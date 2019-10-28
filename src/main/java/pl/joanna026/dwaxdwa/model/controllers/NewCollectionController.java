@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionDTO;
+import pl.joanna026.dwaxdwa.model.DTO.ExerciseDTO;
 import pl.joanna026.dwaxdwa.model.entities.Exercise;
-import pl.joanna026.dwaxdwa.model.DTO.ExerciseCollectionCreateDTO;
+import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
+import pl.joanna026.dwaxdwa.model.services.ExerciseService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -30,17 +33,17 @@ public class NewCollectionController {
     @GetMapping("/add")
     public String prepareNewCollectionForm(Model model) {
         model.addAttribute("exercisesList", exerciseService.findAll());
-        model.addAttribute("collectionDto", new ExerciseCollectionCreateDTO());
+        model.addAttribute("collectionDto", new ExerciseCollectionDTO());
         return "collectionForm";
     }
 
     @PostMapping("/add")
-    public String processNewCollectionForm(@Valid ExerciseCollectionCreateDTO collectionDto, BindingResult result,
+    public String processNewCollectionForm(@Valid ExerciseCollectionDTO collectionDto, BindingResult result,
                                            @RequestParam List<Long> exerciseId) {
         if (result.hasErrors()) {
             return ("collectionForm");
         }
-        List<Exercise> exercisesToAdd = new ArrayList<>();
+        List<ExerciseDTO> exercisesToAdd = new ArrayList<>();
 
         for (Long id : exerciseId) {
             exercisesToAdd.add(exerciseService.findById(id));
