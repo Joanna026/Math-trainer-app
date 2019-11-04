@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <style>
@@ -52,7 +52,7 @@
                                 <p class="control has-icons-right">
                             <input class="input is-info is-large has-text-centered"
                                    style="font-size: 120px; width: 60%; height: 70%; margin-top: 6%; margin-left: 20%; text-align: center"
-                                   type="text" name="answer" placeholder="wynik" autofocus="autofocus" id="user-answer">
+                                   type="text" name="answer" placeholder="<spring:message code="result.placeholder"/>" autofocus="autofocus" id="user-answer">
                                 </p>
                             </div>
                             <input type="hidden" name="correctAnswer" value="${exercise.correctAnswer}" id="correct-answer"/>
@@ -60,7 +60,7 @@
                     </div>
             </div>
             <div class="column is-mobile">
-               <p>Pozostało powtórzeń:</p>
+               <p><spring:message code="repetitions.message"/></p>
                 <p class="has-text-weight-bold is-size-2 has-text-danger">${results[index]}</p>
             </div>
         </div>
@@ -70,13 +70,7 @@
 
 <%------FOOTER------%>
 
-<section class="has-background-warning" style="height: 30px">
-    <div class="columns is-mobile is-centered has-background-warning">
-        <a href="https://bulma.io" style="margin: 15px">
-            <img src="/made-with-bulma.png" alt="Made with Bulma" width="194" height="36">
-        </a>
-    </div>
-</section>
+<%@include file="footer.jsp" %>
 
 
 <%------JS SCRIPT------%>

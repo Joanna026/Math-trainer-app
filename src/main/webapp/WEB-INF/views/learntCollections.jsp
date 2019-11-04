@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -26,7 +26,7 @@
 
 <nav class="navbar has-background-warning" style="height: 200px">
     <p class="navbar-item has-text-centered has-text-dark is-size-2" style="font-weight: bold; margin-left: 45px">
-        Zaliczone testy
+        <spring:message code="learnt.title"/>
     </p>
 </nav>
 
@@ -41,7 +41,7 @@
                             <strong>${collection.collectionName}</strong>
                         </p>
                         <p>
-                            Data ukończenia:
+                            <spring:message code="date.message"/>
                                 ${collection.finishedAt}
                         </p>
                     </div>
@@ -50,7 +50,7 @@
                             <div class="buttons is-centered">
                                 <a class="level-item button is-info"
                                    href="/student/exercise?index=0&collectionId=${collection.collectionId}"
-                                   style="margin-left: 30px; margin-right: 30px">Powtórz</a>
+                                   style="margin-left: 30px; margin-right: 30px"><spring:message code="repeat.message"/></a>
                             </div>
                         </div>
                     </nav>

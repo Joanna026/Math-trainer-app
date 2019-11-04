@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -30,7 +30,7 @@
 <sec:authorize access="hasRole('STUDENT')">
     <nav class="navbar has-background-warning" style="height: 200px">
         <p class="navbar-item has-text-centered has-text-dark is-size-2" style="font-weight: bold; margin-left: 45px">
-            Moje zbiory zadań
+            <spring:message code="my.collections.message"/>
         </p>
     </nav>
 
@@ -57,7 +57,7 @@
                                     </form>
                                     <a class="button is-info"
                                        href='/student/exercise?index=0&collectionId=${collection.id}'
-                                       style="margin-left: 5px">Start</a>
+                                       style="margin-left: 5px"><spring:message code="start.message"/></a>
                                 </div>
                             </div>
                         </nav>
@@ -74,7 +74,7 @@
 <sec:authorize access="hasRole('ADMIN')">
     <nav class="navbar has-background-warning" style="height: 200px">
         <p class="navbar-item has-text-centered has-text-dark is-size-2" style="font-weight: bold; margin-left: 10%">
-            Klasy
+            <spring:message code="groups.message"/>
         </p>
     </nav>
 
@@ -90,18 +90,18 @@
                             <i class="fas fa-angle-down" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <a class="button is info" href="">Przydziel zbiór zadań</a>
+                    <a class="button is info" href=""><spring:message code="demand.collection.message"/></a>
                 </div>
                 <div class="message-body">
                     <div class="columns">
                         <aside class="menu column-is-two-thirds">
-                            Zapisani uczniowie
+                            <spring:message code="group.students.message"/>
                             <c:forEach items="${group.studentList}" var="student">
                                 <div class="menu-list">
                                     <a><strong class="name" style="text-underline: none">${student.name}</strong></a>
                                     <div class="single-student">
                                         <c:if test="${student.learntCollections == null}">
-                                            <p>Brak zaliczonych testów</p>
+                                            <p><spring:message code="no.learnt.message"/></p>
                                         </c:if>
                                         <c:forEach items="${student.learntCollections}" var="collection">
                                             <li style="text-underline: gray">${collection.collectionName} ${collection.finishedAt}</li>
@@ -112,7 +112,7 @@
                         </aside>
 
                         <div class="column">
-                            Przydzielone zbiory zadań
+                            <spring:message code="demanded.message"/>
                             <c:forEach items="${group.obligatoryCollections}" var="collection">
                                 <p>sd</p>
                             </c:forEach>

@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -28,7 +28,7 @@
 
 <nav class="navbar has-background-warning" style="height: 200px">
     <p class="navbar-item has-text-centered has-text-dark is-size-2" style="font-weight: bold; margin-left: 45px">
-        Moje zbiory zadań
+        <spring:message code="my.collections.message"/>
     </p>
 </nav>
 
@@ -49,7 +49,7 @@
                             <form action="/student/collections" method="post">
                                 <div class="buttons is-centered">
                                     <input type="submit" class="level-item button is-info"
-                                           value="Dodaj"/>
+                                           value="<spring:message code="add.message"/>"/>
                                     <input type="hidden" name="collectionId" value="${collection.id}">
                                 </div>
                             </form>

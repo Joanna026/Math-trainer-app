@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 public class ExerciseDTO {
 
     private Long id;
+    private String title;
     @NotNull
     private String content;
     @NotNull

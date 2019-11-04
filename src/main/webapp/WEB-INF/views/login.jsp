@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: joanna
@@ -11,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/title-icon.png" />
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -27,7 +28,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/user/add" class="button is-danger is-size-4 is-medium">Załóż konto</a>
+                    <a href="/user/add" class="button is-danger is-size-4 is-medium"><spring:message code="create.account.message"/>/a>
                 </p>
             </div>
         </div>
@@ -51,7 +52,7 @@
                             <div class="field">
                                 <p class="control has-icons-left" style="margin-bottom: 20px">
                                     <input class="input is-medium is-primary" type="text" name='username'
-                                           autofocus="autofocus" placeholder="Login">
+                                           autofocus="autofocus" placeholder="<spring:message code="username.placeholder"/>">
                                     <span class="icon is-small is-left">
                                 <i class="fa fa-user"></i>
                             </span>
@@ -60,7 +61,7 @@
                             <div class="field">
                                 <p class="control has-icons-left" style="margin-bottom: 20px">
                                     <input class="input is-medium is-danger" type="password" name='password'
-                                           placeholder="Hasło">
+                                           placeholder="<spring:message code="create.account.message"/>">
                                     <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -70,7 +71,7 @@
                             <div class="buttons is-centered">
                                 <button type="submit" class="button is-info is-medium is-centered"
                                         id="log-in">
-                                    Zaloguj
+                                    <spring:message code="login.message"/>
                                 </button>
                             </div>
                         </form>

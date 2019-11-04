@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: joanna
@@ -12,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -29,7 +30,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/login" class="button is-success is-size-4 is-medium">Zaloguj się</a>
+                    <a href="/login" class="button is-success is-size-4 is-medium"><spring:message code="login.message"/></a>
                 </p>
             </div>
         </div>
@@ -49,11 +50,12 @@
                             <img src="/DwaxDwa-logo.png"
                                  alt="DwaxDwa" width="200">
                         </h1>
-                        <form:form method="post" modelAttribute="user">
+                        <form:form method="post" modelAttribute="userDTO">
                         <div class="field">
                             <p class="control has-icons-left" style="margin-bottom: 20px">
+                                <spring:message code="username.placeholder" var="usernamePlaceholder"/>
                                 <form:input path="username" class="input is-medium is-danger" type="text"
-                                            placeholder="Login"/>
+                                            placeholder="${usernamePlaceholder}" autofocus="true"/>
                                 <span class="icon is-small is-left">
     <i class="fas fa-user"></i>
     </span>
@@ -61,8 +63,9 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left" style="margin-bottom: 20px">
+                                <spring:message code="firstname.placeholder" var="firstnamePlaceholder"/>
                                 <form:input path="name" class="input is-medium is-danger" type="text" id="name"
-                                            placeholder="Imię"/>
+                                            placeholder="${firstnamePlaceholder}"/>
                                 <span class="icon is-small is-left">
     <i class="fas fa-user"></i>
     </span>
@@ -88,8 +91,9 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left" style="margin-bottom: 20px">
+                                <spring:message code="password.placeholder" var="passwordPlaceholder"/>
                                 <form:password path="password" class="input is-medium is-danger"
-                                               placeholder="Hasło"/>
+                                               placeholder="${passwordPlaceholder}"/>
                                 <span class="icon is-small is-left">
     <i class="fas fa-lock"></i>
     </span>
@@ -109,7 +113,7 @@
                             <p class="control" style="margin-bottom: 10px">
                                 <button class="button is-info is-medium has-addons is-centered">
                                     <i class="fa fa-user" style="margin-right: 5px"></i>
-                                    Załóż konto
+                                    <spring:message code="create.account.message"/>
                                 </button>
                             </p>
                         </div>

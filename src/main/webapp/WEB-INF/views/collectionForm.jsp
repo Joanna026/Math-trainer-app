@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -36,8 +36,9 @@
                         <form:form method="post" modelAttribute="collectionDto">
                         <div class="field">
                             <p class="control" style="margin-bottom: 20px">
+                                <spring:message code="name.placeholder" var="namePlaceholder"/>
                                 <form:input path="name" class="input is-medium is-danger" type="text"
-                                            placeholder="Nazwa"/>
+                                            placeholder="${namePlaceholder}"/>
                             </p>
                         </div>
                         <div class="field">
@@ -52,7 +53,7 @@
                         <div class="buttons is-centered">
                             <p class="control" style="margin-bottom: 10px">
                                 <button class="button is-info is-medium is-centered">
-                                    Dodaj
+                                    <spring:message code="add.message"/>
                                 </button>
                             </p>
                         </div>

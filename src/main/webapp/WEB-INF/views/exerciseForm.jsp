@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DwaxDwa</title>
+    <title><spring:message code="app.title"/></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -32,41 +32,45 @@
                             <img src="/DwaxDwa-logo.png"
                                  alt="DwaxDwa" width="200">
                         </h1>
-                        <form:form method="post" modelAttribute="exercise">
+                        <form:form method="post" modelAttribute="exerciseDTO">
                         <div class="field">
                             <p class="control" style="margin-bottom: 20px">
+                                <spring:message code="title.placeholder" var="titlePlaceholder"/>
                                 <form:input path="title" class="input is-medium is-danger" type="text"
-                                            placeholder="Tytuł"/>
+                                            placeholder="${titlePlaceholder}"/>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control" style="margin-bottom: 20px">
+                                <spring:message code="content.placeholder" var="contentPlaceholder"/>
                                 <form:input path="content" class="input is-medium is-success" type="text"
-                                            placeholder="Treść zadania"/>
+                                            placeholder="${contentPlaceholder}"/>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control" style="margin-bottom: 20px">
-                               otwarte <form:checkbox path="type" value="true"/>
-                               zamknięte <form:checkbox path="type" value="false"/>
+                                <spring:message code="open.message"/> <form:checkbox path="type" value="true"/>
+                                <spring:message code="close.message"/> <form:checkbox path="type" value="false"/>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control" style="margin-bottom: 20px">
+                                <spring:message code="correct.placeholder" var="correctPlaceholder"/>
                                 <form:input path="correctAnswer" class="input is-medium is-info" type="text"
-                                            placeholder="Poprawna odpowiedź"/>
+                                            placeholder="${correctPlaceholder}"/>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control" style="margin-bottom: 20px">
+                                <spring:message code="repetitions.placeholder" var="repetitionsPlaceholder"/>
                                 <form:input path="repetitionNumber" class="input is-medium is-primary" type="number"
-                                            placeholder="Liczba powtórzeń"/>
+                                            placeholder="${repetitionsPlaceholder}"/>
                             </p>
                         </div>
                         <div class="buttons is-centered">
                             <p class="control" style="margin-bottom: 10px">
                                 <button class="button is-info is-medium is-centered">
-                                    Dodaj
+                                    <spring:message code="add.message"/>
                                 </button>
                             </p>
                         </div>
