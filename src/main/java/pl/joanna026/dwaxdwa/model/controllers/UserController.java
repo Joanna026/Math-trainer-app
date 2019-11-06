@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 import pl.joanna026.dwaxdwa.model.services.RoleService;
+import pl.joanna026.dwaxdwa.model.services.TokenService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
 
 @Controller
@@ -15,13 +17,11 @@ import pl.joanna026.dwaxdwa.model.services.UserService;
 public class UserController {
 
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
-    private final RoleService roleService;
+    private final TokenService tokenService;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder, RoleService roleService) {
+    public UserController(UserService userService, TokenService tokenService) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-        this.roleService = roleService;
+        this.tokenService = tokenService;
     }
 
     @GetMapping ("/create")
@@ -43,6 +43,14 @@ public class UserController {
     public String processRegisterPage(UserDTO userDTO){
         userDTO.setId(null);
         userService.saveUser(userDTO);
+        return "confirmationRequest";
+    }
+
+    @RequestMapping("/activate")
+    public String processActivationLink(@RequestParam String token) {
+
+        tokenService.findUserByTokenAndEnable(token);
+
         return "redirect:/login";
     }
 

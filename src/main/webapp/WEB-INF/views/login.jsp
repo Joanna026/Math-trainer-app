@@ -28,7 +28,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <p class="control">
-                    <a href="/user/add" class="button is-danger is-size-4 is-medium"><spring:message code="create.account.message"/>/a>
+                    <a href="/user/add" class="button is-danger is-size-4 is-medium"><spring:message code="create.account.message"/></a>
                 </p>
             </div>
         </div>

@@ -48,6 +48,14 @@ public class UserService {
         Role studentRole = roleRepository.findByAuthority("ROLE_STUDENT");
         user.setAuthority(studentRole);
         userRepository.save(user);
+
+        String token = UUID.randomUUID().toString();
+        tokenService.createToken(user, token);
+
+        emailService.sendSimpleMessage(userDTO.getEmail(), "Aktywacja konta",
+                "Aby dokończyć proces rejestracji, kliknij w poniższy link: \n " +
+                        "https://dwaxdwa.herokuapp.com/activate?token=" + token);
+
     }
 
     public PasswordEncoder passwordEncoder() {

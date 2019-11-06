@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.joanna026.dwaxdwa.model.entities.ExerciseCollection;
+import pl.joanna026.dwaxdwa.model.services.ExerciseCollectionService;
 import pl.joanna026.dwaxdwa.model.services.UserService;
 import pl.joanna026.dwaxdwa.model.DTO.UserDTO;
 
