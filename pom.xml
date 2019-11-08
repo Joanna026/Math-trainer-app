@@ -113,9 +113,13 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>5.1.6.RELEASE</version>
 		</dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
 
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>

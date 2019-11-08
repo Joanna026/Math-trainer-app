@@ -41,6 +41,7 @@ public class UserController {
 
     @PostMapping("/add")
     public String processRegisterPage(UserDTO userDTO){
+
         userDTO.setId(null);
         userService.saveUser(userDTO);
         return "confirmationRequest";
@@ -53,5 +54,4 @@ public class UserController {
 
         return "redirect:/login";
     }
-
 }

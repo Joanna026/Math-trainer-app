@@ -99,16 +99,18 @@
     </span>
                             </p>
                         </div>
-<%--                        <div class="field">--%>
-<%--                            <p class="control has-icons-left" style="margin-bottom: 20px">--%>
-<%--                                <form:password path="passwordRepeat" class="input is-medium is-success" type="password"--%>
-<%--                                               id="password-repeat"--%>
-<%--                                               placeholder="Powtórz hasło"/>--%>
-<%--                                <span class="icon is-small is-left">--%>
-<%--    <i class="fas fa-lock"></i>--%>
-<%--    </span>--%>
-<%--                            </p>--%>
-<%--                        </div>--%>
+
+                        <div class="field">
+                            <p class="control has-icons-left" style="margin-bottom: 20px">
+                                <spring:message code="repeat.password.placeholder" var="repeatPasswordPlaceholder"/>
+                                <form:password path="matchingPassword" class="input is-medium is-danger"
+                                               placeholder="${repeatPasswordPlaceholder}"/>
+                                <span class="icon is-small is-left">
+    <i class="fas fa-lock"></i>
+    </span>
+                            </p>
+                        </div>
+
                         <div class="buttons has-addons is-centered">
                             <p class="control" style="margin-bottom: 10px">
                                 <button class="button is-info is-medium has-addons is-centered">
