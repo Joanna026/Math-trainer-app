@@ -1,11 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: joanna
-  Date: 9/17/19
-  Time: 1:29 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -44,11 +38,12 @@
                     </div>
                     <nav class="level is-mobile">
                         <div class="level-item" style="margin-top: 60px">
-                            <form action="/student/collections" method="post">
+                            <form action="/admin/set" method="post">
                                 <div class="buttons is-centered">
                                     <input type="submit" class="level-item button is-info"
-                                           value="<spring:message code="add.message"/>"/>
+                                           value="<spring:message code="set.message"/>"/>
                                     <input type="hidden" name="collectionId" value="${collection.id}">
+                                    <input type="hidden" name="groupId" value="${groupId}">
                                 </div>
                             </form>
                         </div>
