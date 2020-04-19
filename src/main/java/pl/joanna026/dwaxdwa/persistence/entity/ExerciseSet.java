@@ -1,6 +1,7 @@
 package pl.joanna026.dwaxdwa.persistence.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +23,8 @@ public class ExerciseSet extends AbstractEntity {
 
 	@Column
 	private LocalDateTime doneDateTime;
+
+	private List<Exercise> exercises;
 
 	public String getName() {
 		return name;
@@ -61,6 +64,14 @@ public class ExerciseSet extends AbstractEntity {
 
 	public void setDoneDateTime(LocalDateTime doneDateTime) {
 		this.doneDateTime = doneDateTime;
+	}
+
+	public List<Exercise> getExercises() {
+		return exercises;
+	}
+
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
 	}
 
 }

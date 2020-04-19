@@ -1,8 +1,7 @@
 package pl.joanna026.dwaxdwa.persistence.dto;
 
 import java.time.LocalDateTime;
-
-import javax.persistence.Column;
+import java.util.List;
 
 public class ExerciseSetDto extends AbstractDto {
 
@@ -15,6 +14,8 @@ public class ExerciseSetDto extends AbstractDto {
 	private LocalDateTime requiredDate;
 
 	private LocalDateTime doneDateTime;
+
+	private List<ExerciseDto> exercises;
 
 	public String getName() {
 		return name;
@@ -54,6 +55,14 @@ public class ExerciseSetDto extends AbstractDto {
 
 	public void setDoneDateTime(LocalDateTime doneDateTime) {
 		this.doneDateTime = doneDateTime;
+	}
+
+	public List<ExerciseDto> getExercises() {
+		return exercises;
+	}
+
+	public void setExercises(List<ExerciseDto> exercises) {
+		this.exercises = exercises;
 	}
 
 }

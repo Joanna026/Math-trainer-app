@@ -1,10 +1,14 @@
 package pl.joanna026.dwaxdwa.persistence.dto;
 
+import java.util.List;
+
 public class TeacherDto extends AbstractDto {
 
 	private String name;
 
 	private String email;
+
+	private List<GroupDto> groups;
 
 	public String getName() {
 		return name;
@@ -20,6 +24,14 @@ public class TeacherDto extends AbstractDto {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<GroupDto> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<GroupDto> groups) {
+		this.groups = groups;
 	}
 
 	private static class TeacherBuilder {
@@ -38,6 +50,11 @@ public class TeacherDto extends AbstractDto {
 
 		public TeacherBuilder withEmail(String email) {
 			this.teacherDto.setEmail(email);
+			return this;
+		}
+
+		public TeacherBuilder withGroups(List<GroupDto> groups) {
+			this.teacherDto.setGroups(groups);
 			return this;
 		}
 
