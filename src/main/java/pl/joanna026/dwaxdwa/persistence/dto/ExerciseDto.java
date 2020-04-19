@@ -42,13 +42,37 @@ public class ExerciseDto extends AbstractDto {
 		this.repeatNumber = repeatNumber;
 	}
 
-	private static class ExerciseBuilder {
+	public static class ExerciseBuilder {
 
 		ExerciseDto exerciseDto = new ExerciseDto();
 
 		public ExerciseBuilder withId(Long id) {
 			this.exerciseDto.setId(id);
 			return this;
+		}
+
+		public ExerciseBuilder withAnswer(String answer) {
+			this.exerciseDto.setAnswer(answer);
+			return this;
+		}
+
+		public ExerciseBuilder withOpen(boolean isOpen) {
+			this.exerciseDto.setOpen(isOpen);
+			return this;
+		}
+
+		public ExerciseBuilder withWrongAnswers(String[] answers) {
+			this.exerciseDto.setWrongAnswers(answers);
+			return this;
+		}
+
+		public ExerciseBuilder withRepeatNumber(Integer number) {
+			this.exerciseDto.setRepeatNumber(number);
+			return this;
+		}
+
+		public ExerciseDto build() {
+			return this.exerciseDto;
 		}
 	}
 
