@@ -1,5 +1,6 @@
 package pl.joanna026.dwaxdwa.persistence.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.joanna026.dwaxdwa.common.BusinessException;
 import pl.joanna026.dwaxdwa.persistence.dto.TeacherDto;
@@ -22,6 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     private TeacherValidator teacherValidator;
 
+    @Autowired
     public TeacherServiceImpl(TeacherRepository teacherRepository, TeacherMapper teacherMapper, TeacherValidator teacherValidator) {
         this.teacherRepository = teacherRepository;
         this.teacherMapper = teacherMapper;

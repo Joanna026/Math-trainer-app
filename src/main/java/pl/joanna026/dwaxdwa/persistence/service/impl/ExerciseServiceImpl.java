@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.joanna026.dwaxdwa.common.BusinessException;
@@ -24,6 +25,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 	private ExerciseValidator exerciseValidator;
 
+	@Autowired
 	public ExerciseServiceImpl(ExerciseRepository exerciseRepository,
 			ExerciseMapper exerciseMapper, ExerciseValidator exerciseValidator) {
 		this.exerciseRepository = exerciseRepository;

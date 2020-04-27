@@ -1,5 +1,6 @@
 package pl.joanna026.dwaxdwa.persistence.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.joanna026.dwaxdwa.common.BusinessException;
 import pl.joanna026.dwaxdwa.persistence.dto.ExerciseSetDto;
@@ -23,6 +24,7 @@ public class ExerciseSetServiceImpl implements ExerciseSetService {
 
     private ExerciseSetMapper exerciseSetMapper;
 
+    @Autowired
     public ExerciseSetServiceImpl(ExerciseSetRepository exerciseSetRepository,
                                   ExerciseSetValidator exerciseSetValidator,
                                   ExerciseSetMapper exerciseSetMapper) {
